@@ -20,6 +20,9 @@ struct TorrentListView: View {
                     TorrentListItemView(torrent: torrent)
                         .padding(.vertical, 6)
                         .contextMenu {
+                            Button("Resume", action: { self.viewModel.resume(torrent) })
+                            Button("Pause", action: { self.viewModel.pause(torrent) })
+                            Divider()
                             Button("Top", action: { self.viewModel.top(torrent) })
                             Button("Up", action: { self.viewModel.up(torrent) })
                             Button("Down", action: { self.viewModel.down(torrent) })
@@ -39,9 +42,6 @@ struct TorrentListView: View {
             ForEach(viewModel.filters) { filter -> Text in
                 
                 switch filter {
-                case .all:
-                    return Text("All")
-
                 case .downloading:
                     return Text("Downloading")
                     
@@ -50,6 +50,9 @@ struct TorrentListView: View {
                     
                 case .queued:
                     return Text("Queued")
+                    
+                case .paused:
+                    return Text("Paused")
                 }
                 
             }
@@ -62,9 +65,11 @@ struct TorrentListView: View {
 struct TorrentsListView_Previews: PreviewProvider {
     
     static var previews: some View {
-        
+        let credentials = Credentials(endpoint: URL(string: "")!, password: "")
+        let client = DelugeClient(credentials: credentials)
+       
         return NavigationView {
-            TorrentListView(viewModel: .init(credentials: .init(endpoint: URL(string: "")!, password: "")))
+            TorrentListView(viewModel: .init(client: client))
         }
     }
 }

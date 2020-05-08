@@ -8,18 +8,8 @@
 
 import Foundation
 
-enum TorrentState: String, Codable {
+struct Torrent: Decodable, Identifiable, Hashable {
     
-    var id: TorrentState { self }
-    
-    case downloading = "Downloading"
-    case queued = "Queued"
-    case seeding = "Seeding"
-}
-
-struct TorrentListItem: Decodable, Identifiable, Hashable {
-    
-
     var id: String { hash }
     let eta: TimeInterval
     let queue: Int

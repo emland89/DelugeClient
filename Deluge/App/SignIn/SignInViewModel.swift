@@ -13,10 +13,10 @@ final class SignInViewModel: ObservableObject {
     
     @Published var isSignInErrorPresented = false
     
-    let credentialsValueSubject: CurrentValueSubject<Credentials?, Never>
+    let credentialsValueSubject: CurrentValueSubject<DelugeClient?, Never>
     var cancellable: AnyCancellable?
     
-    init(credentialsValueSubject: CurrentValueSubject<Credentials?, Never>) {
+    init(credentialsValueSubject: CurrentValueSubject<DelugeClient?, Never>) {
         self.credentialsValueSubject = credentialsValueSubject
     }
     
@@ -30,8 +30,9 @@ final class SignInViewModel: ObservableObject {
         cancellable?.cancel()
         
         let credentials = Credentials(endpoint: endpoint, password: password)
+        let client = DelugeClient(credentials: credentials)
         
-        cancellable = Authenticator(credentials: credentials).fetchPublisher()
+        cancellable = client.authenticatePublisher()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { result in
                 guard case .failure(let error) = result else  { return }
@@ -39,7 +40,7 @@ final class SignInViewModel: ObservableObject {
                 self.isSignInErrorPresented = true
 
             }, receiveValue: { someValue in
-                self.credentialsValueSubject.value = credentials
+                self.credentialsValueSubject.value = client
             })
     }
 }

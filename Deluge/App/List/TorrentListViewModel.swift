@@ -16,31 +16,29 @@ final class TorrentListViewModel: ObservableObject {
     enum Filter: CaseIterable, Identifiable {
         
         var id: Self { self }
-        
-        case all
         case downloading
         case seeding
         case queued
+        case paused
     }
     
     // MARK: - Properties
 
-    @Published var selectedFilter: Filter = .all
-    @Published private var unfilteredTorrents: [TorrentListItem] = []
+    @Published var selectedFilter: Filter = .downloading
+    @Published private var unfilteredTorrents: [Torrent] = []
     
     let filters = Filter.allCases
-    private let service: TorrentListService
+    private let client: DelugeClient
     private var fetchCancellable: AnyCancellable?
     private var timerCancellable: AnyCancellable?
 
-    var torrents: [TorrentListItem] {
+    var cancellables: [AnyCancellable] = []
+    
+    var torrents: [Torrent] {
         
         unfilteredTorrents.filter { torrent in
             
             switch selectedFilter {
-            case .all:
-                return true
-                
             case .downloading:
                 return torrent.state == .downloading
                 
@@ -49,6 +47,9 @@ final class TorrentListViewModel: ObservableObject {
                 
             case .queued:
                 return torrent.state == .queued
+                
+            case .paused:
+                return torrent.state == .paused
             }
         }
         .sorted { ($0.queue == -1 ? Int.max : $0.queue, $0.name) < ($1.queue == -1 ? Int.max : $1.queue, $1.name) }
@@ -56,8 +57,8 @@ final class TorrentListViewModel: ObservableObject {
     
     // MARK: - Life Cycle
 
-    init(credentials: Credentials) {
-        service = TorrentListService(credentials: credentials)
+    init(client: DelugeClient) {
+        self.client = client
     }
     
     func setup() {
@@ -70,29 +71,44 @@ final class TorrentListViewModel: ObservableObject {
     
     // MARK: - Actions
 
-    func top(_ torrents: TorrentListItem...) {
-        
+    func resume(_ torrents: Torrent...) {
+        execute(.resume, for: torrents)
     }
     
-    func up(_ torrent: TorrentListItem...) {
-        
+    func pause(_ torrents: Torrent...) {
+        execute(.pause, for: torrents)
     }
     
-    func down(_ torrent: TorrentListItem...) {
-        
+    
+    func top(_ torrents: Torrent...) {
+        execute(.top, for: torrents)
     }
     
-    func bottom(_ torrent: TorrentListItem...) {
-        
+    func up(_ torrents: Torrent...) {
+        execute(.up, for: torrents)
+
+    }
+    
+    func down(_ torrents: Torrent...) {
+        execute(.down, for: torrents)
+    }
+    
+    func bottom(_ torrents: Torrent...) {
+        execute(.bottom, for: torrents)
+    }
+
+    private func execute(_ action: DelugeClient.Action, for torrents: [Torrent]) {
+        client.actionPublisher(action, for: torrents).sink(receiveCompletion: { _ in }, receiveValue: {} ).store(in: &cancellables)
     }
     
     // MARK: - Helpers
 
     private func fetch() {
         
-        fetchCancellable = service.fetchPublisher()
+        client.fetchAllPublisher()
             .receive(on: RunLoop.main)
             .replaceError(with: unfilteredTorrents)
             .assign(to: \.unfilteredTorrents, on: self)
+            .store(in: &cancellables)
     }
 }

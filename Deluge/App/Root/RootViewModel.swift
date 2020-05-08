@@ -17,15 +17,15 @@ final class RootViewModel: ObservableObject {
     }
     
     @Published private(set) var attached: Attached?
-    private let credentialsValueSubject = CurrentValueSubject<Credentials?, Never>(nil)
+    private let credentialsValueSubject = CurrentValueSubject<DelugeClient?, Never>(nil)
     private var cancellable: AnyCancellable?
     
     func setup() {
         
-        cancellable = credentialsValueSubject.sink { [unowned self] credentials in
+        cancellable = credentialsValueSubject.sink { [unowned self] client in
             
-            if let credentials = credentials {
-                self.attached = .torrentList(.init(credentials: credentials))
+            if let client = client {
+                self.attached = .torrentList(.init(client: client))
             }
             else {
                 self.attached = .signIn(.init(credentialsValueSubject: self.credentialsValueSubject))

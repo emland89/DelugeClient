@@ -10,7 +10,9 @@ import SwiftUI
 
 struct TorrentListItemView: View {
     
-    let torrent: TorrentListItem
+    let torrent: Torrent
+    
+    private var percent: Double { torrent.progress / 100 }
     
     var body: some View {
         
@@ -20,7 +22,7 @@ struct TorrentListItemView: View {
                 .font(.footnote)
                 .lineLimit(2)
             
-            ProgressBar(value: .constant(torrent.progress / 100))
+            ProgressBar(value: .constant(percent))
                 .frame(height: 3)
             
             HStack {
@@ -36,9 +38,8 @@ struct TorrentListItemView: View {
                 
                 ETAView(eta: .constant(self.torrent.eta))
                 
-                PercentView(percent: .constant(torrent.progress / 100))
+                PercentView(percent: .constant(percent))
                     .frame(minWidth: 22, alignment: .trailing)
-                
             }
             .font(.caption)
             .foregroundColor(.secondary)
@@ -54,7 +55,7 @@ struct TorrentListItemView_Previews: PreviewProvider {
 
     static var previews: some View {
 
-        let torrent1 = TorrentListItem(
+        let torrent1 = Torrent(
             eta: 60,
             queue: 1,
             state: .downloading,
@@ -66,7 +67,7 @@ struct TorrentListItemView_Previews: PreviewProvider {
             label: "tv"
         )
         
-        let torrent2 = TorrentListItem(
+        let torrent2 = Torrent(
             eta: 60,
             queue: -1,
             state: .downloading,
@@ -78,7 +79,7 @@ struct TorrentListItemView_Previews: PreviewProvider {
             label: "tv"
         )
         
-        let torrent3 = TorrentListItem(
+        let torrent3 = Torrent(
             eta: 60,
             queue: 99,
             state: .downloading,
