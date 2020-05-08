@@ -19,6 +19,12 @@ struct TorrentListView: View {
                 ForEach(self.viewModel.torrents) { torrent in
                     TorrentListItemView(torrent: torrent)
                         .padding(.vertical, 6)
+                        .contextMenu {
+                            Button("Top", action: { self.viewModel.top(torrent) })
+                            Button("Up", action: { self.viewModel.up(torrent) })
+                            Button("Down", action: { self.viewModel.down(torrent) })
+                            Button("Bottom", action: { self.viewModel.bottom(torrent) })
+                    }
                 }
             }
         }

@@ -12,17 +12,15 @@ struct ETAView: View {
     
     @Binding var eta: TimeInterval
     
-    private let etaFormatter: DateComponentsFormatter = {
+    private static let etaFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .short
         formatter.allowedUnits = [.second, .minute, .hour]
         return formatter
     }()
     
-    
-    
     var body: some View {
-        Text("\(self.etaFormatter.string(from: eta)!)")
+        Text("\(Self.etaFormatter.string(from: eta)!)")
     }
 }
 

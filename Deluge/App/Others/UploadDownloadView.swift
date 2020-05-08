@@ -16,12 +16,18 @@ struct UploadDownloadView: View {
     let byteCountFormatter = ByteCountFormatter()
     
     var body: some View {
+       
         HStack {
-            Image(systemName: "arrow.up")
-            Text("\(self.byteCountFormatter.string(fromByteCount: Int64(self.uploadRate)))")
             
-            Image(systemName: "arrow.down")
-            Text("\(self.byteCountFormatter.string(fromByteCount: Int64(self.downloadRate)))")
+            HStack(spacing: 2) {
+                Image(systemName: "arrow.down")
+                Text("\(self.byteCountFormatter.string(fromByteCount: Int64(self.downloadRate)))")
+            }
+            
+            HStack(spacing: 2) {
+                Image(systemName: "arrow.up")
+                Text("\(self.byteCountFormatter.string(fromByteCount: Int64(self.uploadRate)))")
+            }
         }
     }
     

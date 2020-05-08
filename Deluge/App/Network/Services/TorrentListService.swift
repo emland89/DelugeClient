@@ -19,11 +19,11 @@ struct TorrentListService {
             case result
         }
         
-        let result: [TorrentStatus]
+        let result: [TorrentListItem]
         
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            let decoded = try container.decode([String: TorrentStatus].self, forKey: .result)
+            let decoded = try container.decode([String: TorrentListItem].self, forKey: .result)
             result = decoded.map { $0.value }
         }
     }
@@ -34,7 +34,7 @@ struct TorrentListService {
     
     // MARK: - Methods
     
-    func fetchPublisher() -> AnyPublisher<[TorrentStatus], Swift.Error> {
+    func fetchPublisher() -> AnyPublisher<[TorrentListItem], Swift.Error> {
         
         let body = RequestBody(
             method: "core.get_torrents_status",

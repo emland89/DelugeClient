@@ -10,36 +10,38 @@ import SwiftUI
 
 struct TorrentListItemView: View {
     
-    let torrent: TorrentStatus
+    let torrent: TorrentListItem
     
     var body: some View {
-                 
+        
+        VStack(alignment: .leading, spacing: 6) {
             
-            VStack(alignment: .leading, spacing: 6) {
+            Text(self.torrent.name.trimmingCharacters(in: .whitespacesAndNewlines))
+                .font(.footnote)
+                .lineLimit(2)
+            
+            ProgressBar(value: .constant(torrent.progress / 100))
+                .frame(height: 3)
+            
+            HStack {
+                Text(queue)
+                    .frame(minWidth: 22, alignment: .leading)
                 
-                Text(self.torrent.name.trimmingCharacters(in: .whitespacesAndNewlines))
-                    .font(.footnote)
-                    .lineLimit(2)
+                UploadDownloadView(
+                    uploadRate: .constant(torrent.uploadPayloadRate),
+                    downloadRate: .constant(torrent.downloadPayloadRate)
+                )
                 
-                ProgressBar(value: .constant(torrent.progress))
-                    .frame(height: 3)
+                Spacer()
                 
-                HStack {
-                    Text(queue)
-                        .frame(minWidth: 28, alignment: .leading)
-                    
-                    UploadDownloadView(
-                        uploadRate: .constant(torrent.uploadPayloadRate),
-                        downloadRate: .constant(torrent.downloadPayloadRate)
-                    )
-                    
-                    Spacer()
-                    
-                    ETAView(eta: .constant(self.torrent.eta))
-                }
-                .font(.caption)
-                .foregroundColor(.secondary)
-
+                ETAView(eta: .constant(self.torrent.eta))
+                
+                PercentView(percent: .constant(torrent.progress / 100))
+                    .frame(minWidth: 22, alignment: .trailing)
+                
+            }
+            .font(.caption)
+            .foregroundColor(.secondary)
         }
     }
     
@@ -52,36 +54,36 @@ struct TorrentListItemView_Previews: PreviewProvider {
 
     static var previews: some View {
 
-        let torrent1 = TorrentStatus(
+        let torrent1 = TorrentListItem(
             eta: 60,
             queue: 1,
             state: .downloading,
             hash: "aas",
-            progress: 0.6,
+            progress: 20,
             name: "Name",
             uploadPayloadRate: 31,
             downloadPayloadRate: 14,
             label: "tv"
         )
         
-        let torrent2 = TorrentStatus(
+        let torrent2 = TorrentListItem(
             eta: 60,
             queue: -1,
             state: .downloading,
             hash: "aas",
-            progress: 0.6,
+            progress: 70,
             name: "Name",
             uploadPayloadRate: 31,
             downloadPayloadRate: 14,
             label: "tv"
         )
         
-        let torrent3 = TorrentStatus(
+        let torrent3 = TorrentListItem(
             eta: 60,
             queue: 99,
             state: .downloading,
             hash: "aas",
-            progress: 0.6,
+            progress: 55,
             name: "Name",
             uploadPayloadRate: 31,
             downloadPayloadRate: 14,

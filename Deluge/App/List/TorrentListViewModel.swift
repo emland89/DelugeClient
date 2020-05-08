@@ -11,6 +11,8 @@ import Combine
 
 final class TorrentListViewModel: ObservableObject {
     
+    // MARK: - Types
+    
     enum Filter: CaseIterable, Identifiable {
         
         var id: Self { self }
@@ -21,15 +23,17 @@ final class TorrentListViewModel: ObservableObject {
         case queued
     }
     
+    // MARK: - Properties
+
     @Published var selectedFilter: Filter = .all
-    @Published private var unfilteredTorrents: [TorrentStatus] = []
+    @Published private var unfilteredTorrents: [TorrentListItem] = []
     
     let filters = Filter.allCases
     private let service: TorrentListService
     private var fetchCancellable: AnyCancellable?
     private var timerCancellable: AnyCancellable?
 
-    var torrents: [TorrentStatus] {
+    var torrents: [TorrentListItem] {
         
         unfilteredTorrents.filter { torrent in
             
@@ -50,6 +54,8 @@ final class TorrentListViewModel: ObservableObject {
         .sorted { ($0.queue == -1 ? Int.max : $0.queue, $0.name) < ($1.queue == -1 ? Int.max : $1.queue, $1.name) }
     }
     
+    // MARK: - Life Cycle
+
     init(credentials: Credentials) {
         service = TorrentListService(credentials: credentials)
     }
@@ -62,6 +68,26 @@ final class TorrentListViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Actions
+
+    func top(_ torrents: TorrentListItem...) {
+        
+    }
+    
+    func up(_ torrent: TorrentListItem...) {
+        
+    }
+    
+    func down(_ torrent: TorrentListItem...) {
+        
+    }
+    
+    func bottom(_ torrent: TorrentListItem...) {
+        
+    }
+    
+    // MARK: - Helpers
+
     private func fetch() {
         
         fetchCancellable = service.fetchPublisher()

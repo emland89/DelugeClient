@@ -16,7 +16,7 @@
 		207F234324612229000312AC /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F234224612229000312AC /* SignInView.swift */; };
 		207F234524612268000312AC /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F234424612268000312AC /* RootViewModel.swift */; };
 		207F234924612291000312AC /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F234824612291000312AC /* RootView.swift */; };
-		207F234C24612449000312AC /* TorrentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F234B24612449000312AC /* TorrentStatus.swift */; };
+		207F234C24612449000312AC /* TorrentListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F234B24612449000312AC /* TorrentListItem.swift */; };
 		207F235224612AA1000312AC /* TorrentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F235124612AA1000312AC /* TorrentListView.swift */; };
 		207F23542461314E000312AC /* TorrentListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23532461314E000312AC /* TorrentListItemView.swift */; };
 		207F23572461BFEB000312AC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23562461BFEB000312AC /* SignInViewModel.swift */; };
@@ -30,6 +30,7 @@
 		207F236A2465023F000312AC /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23692465023F000312AC /* RequestBody.swift */; };
 		207F236E2465118F000312AC /* URLSession+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F236D2465118F000312AC /* URLSession+Utils.swift */; };
 		207F237324651310000312AC /* TorrentListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F237224651310000312AC /* TorrentListService.swift */; };
+		207F23752465E37B000312AC /* PercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23742465E37B000312AC /* PercentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +45,7 @@
 		207F234224612229000312AC /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		207F234424612268000312AC /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		207F234824612291000312AC /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		207F234B24612449000312AC /* TorrentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentStatus.swift; sourceTree = "<group>"; };
+		207F234B24612449000312AC /* TorrentListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentListItem.swift; sourceTree = "<group>"; };
 		207F235124612AA1000312AC /* TorrentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentListView.swift; sourceTree = "<group>"; };
 		207F23532461314E000312AC /* TorrentListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentListItemView.swift; sourceTree = "<group>"; };
 		207F23562461BFEB000312AC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		207F23692465023F000312AC /* RequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBody.swift; sourceTree = "<group>"; };
 		207F236D2465118F000312AC /* URLSession+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Utils.swift"; sourceTree = "<group>"; };
 		207F237224651310000312AC /* TorrentListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentListService.swift; sourceTree = "<group>"; };
+		207F23742465E37B000312AC /* PercentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,12 +116,12 @@
 		207F23462461227A000312AC /* App */ = {
 			isa = PBXGroup;
 			children = (
+				207F234F24612A7D000312AC /* List */,
 				207F2366246500BB000312AC /* Network */,
 				207F23652464FD66000312AC /* Others */,
-				207F23622464FBD5000312AC /* Styles */,
-				207F234F24612A7D000312AC /* List */,
-				207F23552461BFDC000312AC /* SignIn */,
 				207F234724612286000312AC /* Root */,
+				207F23552461BFDC000312AC /* SignIn */,
+				207F23622464FBD5000312AC /* Styles */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -136,7 +138,7 @@
 		207F234A24612436000312AC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				207F234B24612449000312AC /* TorrentStatus.swift */,
+				207F234B24612449000312AC /* TorrentListItem.swift */,
 				207F235A2461C58C000312AC /* Credentials.swift */,
 			);
 			path = Models;
@@ -175,6 +177,7 @@
 				207F235C2461D29C000312AC /* UploadDownloadView.swift */,
 				207F23602461D4A8000312AC /* ProgressBar.swift */,
 				207F235E2461D331000312AC /* ETAView.swift */,
+				207F23742465E37B000312AC /* PercentView.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -285,9 +288,10 @@
 				207F232F2461220D000312AC /* AppDelegate.swift in Sources */,
 				207F236A2465023F000312AC /* RequestBody.swift in Sources */,
 				207F23572461BFEB000312AC /* SignInViewModel.swift in Sources */,
-				207F234C24612449000312AC /* TorrentStatus.swift in Sources */,
+				207F234C24612449000312AC /* TorrentListItem.swift in Sources */,
 				207F235B2461C58C000312AC /* Credentials.swift in Sources */,
 				207F234924612291000312AC /* RootView.swift in Sources */,
+				207F23752465E37B000312AC /* PercentView.swift in Sources */,
 				207F235D2461D29C000312AC /* UploadDownloadView.swift in Sources */,
 				207F235F2461D331000312AC /* ETAView.swift in Sources */,
 				207F23312461220D000312AC /* SceneDelegate.swift in Sources */,
