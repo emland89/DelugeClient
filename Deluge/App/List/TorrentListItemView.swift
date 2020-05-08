@@ -13,11 +13,7 @@ struct TorrentListItemView: View {
     let torrent: TorrentStatus
     
     var body: some View {
-        
-        HStack {
-            Text(queue)
-                .font(.caption)
-                .frame(minWidth: 28)
+                 
             
             VStack(alignment: .leading, spacing: 6) {
                 
@@ -29,6 +25,9 @@ struct TorrentListItemView: View {
                     .frame(height: 3)
                 
                 HStack {
+                    Text(queue)
+                        .frame(minWidth: 28, alignment: .leading)
+                    
                     UploadDownloadView(
                         uploadRate: .constant(torrent.uploadPayloadRate),
                         downloadRate: .constant(torrent.downloadPayloadRate)
@@ -41,7 +40,6 @@ struct TorrentListItemView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
 
-            }
         }
     }
     
