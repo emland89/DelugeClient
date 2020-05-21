@@ -65,11 +65,10 @@ struct TorrentListView: View {
 struct TorrentsListView_Previews: PreviewProvider {
     
     static var previews: some View {
-        let credentials = Credentials(endpoint: URL(string: "")!, password: "")
-        let client = DelugeClient(credentials: credentials)
        
         return NavigationView {
-            TorrentListView(viewModel: .init(client: client))
+            TorrentListView(viewModel: .init(store: store))
         }
     }
 }
+

@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-final class TorrentListViewModel: ObservableObject {
+final class TorrentListViewModel: ViewModel {
     
     // MARK: - Types
     
@@ -23,20 +23,16 @@ final class TorrentListViewModel: ObservableObject {
     }
     
     // MARK: - Properties
+    
 
     @Published var selectedFilter: Filter = .downloading
-    @Published private var unfilteredTorrents: [Torrent] = []
-    
-    let filters = Filter.allCases
-    private let client: DelugeClient
-    private var fetchCancellable: AnyCancellable?
-    private var timerCancellable: AnyCancellable?
+    var cancellable: AnyCancellable?
 
-    var cancellables: [AnyCancellable] = []
+    let filters = Filter.allCases
     
     var torrents: [Torrent] {
         
-        unfilteredTorrents.filter { torrent in
+        store.state.torrents.filter { torrent in
             
             switch selectedFilter {
             case .downloading:
@@ -57,58 +53,36 @@ final class TorrentListViewModel: ObservableObject {
     
     // MARK: - Life Cycle
 
-    init(client: DelugeClient) {
-        self.client = client
-    }
+
     
     func setup() {
-        timerCancellable = Timer.publish(every: 1.0, on: RunLoop.main, in: .common)
-            .autoconnect()
-            .sink { receivedTimeStamp in
-                self.fetch()
-        }
+        store.send(StartFetchTorrentsAction())
     }
     
     // MARK: - Actions
 
     func resume(_ torrents: Torrent...) {
-        execute(.resume, for: torrents)
+       // execute(.resume, for: torrents)
     }
     
     func pause(_ torrents: Torrent...) {
-        execute(.pause, for: torrents)
+        //execute(.pause, for: torrents)
     }
     
-    
     func top(_ torrents: Torrent...) {
-        execute(.top, for: torrents)
+        //execute(.top, for: torrents)
     }
     
     func up(_ torrents: Torrent...) {
-        execute(.up, for: torrents)
-
+        //execute(.up, for: torrents)
     }
     
     func down(_ torrents: Torrent...) {
-        execute(.down, for: torrents)
+        //execute(.down, for: torrents)
     }
     
     func bottom(_ torrents: Torrent...) {
-        execute(.bottom, for: torrents)
+        //execute(.bottom, for: torrents)
     }
 
-    private func execute(_ action: DelugeClient.Action, for torrents: [Torrent]) {
-        client.actionPublisher(action, for: torrents).sink(receiveCompletion: { _ in }, receiveValue: {} ).store(in: &cancellables)
-    }
-    
-    // MARK: - Helpers
-
-    private func fetch() {
-        
-        client.fetchAllPublisher()
-            .receive(on: RunLoop.main)
-            .replaceError(with: unfilteredTorrents)
-            .assign(to: \.unfilteredTorrents, on: self)
-            .store(in: &cancellables)
-    }
 }

@@ -11,7 +11,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    let store: AppStore = {
+        let client = DelugeClient(credentials: .init(endpoint: URL(string: "google.com")!, password: "")) // Remove
+        let state = AppState(credentials: .init(endpoint: URL(string: "https://deluge.orembo.com")!, password: "@Mira0329"))
+        return AppStore(state: state, environment: .init(delugeClient: client))
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

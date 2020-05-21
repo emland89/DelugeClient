@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		207F232F2461220D000312AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F232E2461220D000312AC /* AppDelegate.swift */; };
 		207F23312461220D000312AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23302461220D000312AC /* SceneDelegate.swift */; };
-		207F23332461220D000312AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23322461220D000312AC /* ContentView.swift */; };
 		207F23352461220F000312AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207F23342461220F000312AC /* Assets.xcassets */; };
 		207F23382461220F000312AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207F23372461220F000312AC /* Preview Assets.xcassets */; };
 		207F233B2461220F000312AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207F23392461220F000312AC /* LaunchScreen.storyboard */; };
@@ -29,13 +28,19 @@
 		207F23752465E37B000312AC /* PercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23742465E37B000312AC /* PercentView.swift */; };
 		207F23772465F2E9000312AC /* DelugeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23762465F2E9000312AC /* DelugeClient.swift */; };
 		207F23792465FAD7000312AC /* TorrentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23782465FAD7000312AC /* TorrentState.swift */; };
+		209B6487247719B000F74CCC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209B6486247719B000F74CCC /* ViewModel.swift */; };
+		209B648C24771CD200F74CCC /* PreviewProvider+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209B648B24771CD200F74CCC /* PreviewProvider+Utilities.swift */; };
+		20C193F724731B27007AE477 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193F624731B27007AE477 /* AppState.swift */; };
+		20C193F924731C02007AE477 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193F824731C02007AE477 /* AppStore.swift */; };
+		20C193FB24731C23007AE477 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193FA24731C23007AE477 /* AppEnvironment.swift */; };
+		20C193FE24731CC0007AE477 /* StartFetchTorrentsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193FD24731CC0007AE477 /* StartFetchTorrentsAction.swift */; };
+		20C4130424770BCF00A982E5 /* SwiftyRedux in Frameworks */ = {isa = PBXBuildFile; productRef = 20C4130324770BCF00A982E5 /* SwiftyRedux */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		207F232B2461220D000312AC /* Deluge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deluge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207F232E2461220D000312AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		207F23302461220D000312AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		207F23322461220D000312AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		207F23342461220F000312AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		207F23372461220F000312AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		207F233A2461220F000312AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +61,12 @@
 		207F23742465E37B000312AC /* PercentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentView.swift; sourceTree = "<group>"; };
 		207F23762465F2E9000312AC /* DelugeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelugeClient.swift; sourceTree = "<group>"; };
 		207F23782465FAD7000312AC /* TorrentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentState.swift; sourceTree = "<group>"; };
+		209B6486247719B000F74CCC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		209B648B24771CD200F74CCC /* PreviewProvider+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewProvider+Utilities.swift"; sourceTree = "<group>"; };
+		20C193F624731B27007AE477 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		20C193F824731C02007AE477 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		20C193FA24731C23007AE477 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		20C193FD24731CC0007AE477 /* StartFetchTorrentsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFetchTorrentsAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C4130424770BCF00A982E5 /* SwiftyRedux in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,15 +100,10 @@
 		207F232D2461220D000312AC /* Deluge */ = {
 			isa = PBXGroup;
 			children = (
-				207F233C2461220F000312AC /* Info.plist */,
 				207F232E2461220D000312AC /* AppDelegate.swift */,
-				207F23322461220D000312AC /* ContentView.swift */,
 				207F23302461220D000312AC /* SceneDelegate.swift */,
-				207F23342461220F000312AC /* Assets.xcassets */,
 				207F23462461227A000312AC /* App */,
-				207F23392461220F000312AC /* LaunchScreen.storyboard */,
-				207F234A24612436000312AC /* Models */,
-				207F23362461220F000312AC /* Preview Content */,
+				209B648A24771BF300F74CCC /* Resources */,
 			);
 			path = Deluge;
 			sourceTree = "<group>";
@@ -112,12 +119,16 @@
 		207F23462461227A000312AC /* App */ = {
 			isa = PBXGroup;
 			children = (
-				207F234F24612A7D000312AC /* List */,
+				20C193FA24731C23007AE477 /* AppEnvironment.swift */,
+				20C193F624731B27007AE477 /* AppState.swift */,
+				20C193F824731C02007AE477 /* AppStore.swift */,
+				20C193F524731B04007AE477 /* Actions */,
+				207F23652464FD66000312AC /* Misc - Utilities */,
+				209B6488247719D400F74CCC /* Misc - Views */,
+				207F23622464FBD5000312AC /* Misc - Views - Styles */,
+				207F234A24612436000312AC /* Models */,
 				207F2366246500BB000312AC /* Network */,
-				207F23652464FD66000312AC /* Others */,
-				207F234724612286000312AC /* Root */,
-				207F23552461BFDC000312AC /* SignIn */,
-				207F23622464FBD5000312AC /* Styles */,
+				209B648924771A0700F74CCC /* Views */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -160,23 +171,21 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
-		207F23622464FBD5000312AC /* Styles */ = {
+		207F23622464FBD5000312AC /* Misc - Views - Styles */ = {
 			isa = PBXGroup;
 			children = (
 				207F23632464FBE5000312AC /* FilledButtonStyle.swift */,
 			);
-			path = Styles;
+			path = "Misc - Views - Styles";
 			sourceTree = "<group>";
 		};
-		207F23652464FD66000312AC /* Others */ = {
+		207F23652464FD66000312AC /* Misc - Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				207F235C2461D29C000312AC /* UploadDownloadView.swift */,
-				207F23602461D4A8000312AC /* ProgressBar.swift */,
-				207F235E2461D331000312AC /* ETAView.swift */,
-				207F23742465E37B000312AC /* PercentView.swift */,
+				209B6486247719B000F74CCC /* ViewModel.swift */,
+				209B648B24771CD200F74CCC /* PreviewProvider+Utilities.swift */,
 			);
-			path = Others;
+			path = "Misc - Utilities";
 			sourceTree = "<group>";
 		};
 		207F2366246500BB000312AC /* Network */ = {
@@ -195,6 +204,54 @@
 			path = Others;
 			sourceTree = "<group>";
 		};
+		209B6488247719D400F74CCC /* Misc - Views */ = {
+			isa = PBXGroup;
+			children = (
+				207F235C2461D29C000312AC /* UploadDownloadView.swift */,
+				207F23602461D4A8000312AC /* ProgressBar.swift */,
+				207F235E2461D331000312AC /* ETAView.swift */,
+				207F23742465E37B000312AC /* PercentView.swift */,
+			);
+			path = "Misc - Views";
+			sourceTree = "<group>";
+		};
+		209B648924771A0700F74CCC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				207F234F24612A7D000312AC /* List */,
+				207F234724612286000312AC /* Root */,
+				207F23552461BFDC000312AC /* SignIn */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		209B648A24771BF300F74CCC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				207F233C2461220F000312AC /* Info.plist */,
+				207F23342461220F000312AC /* Assets.xcassets */,
+				207F23392461220F000312AC /* LaunchScreen.storyboard */,
+				207F23362461220F000312AC /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		20C193F524731B04007AE477 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				20C193FC24731C9A007AE477 /* Actions */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		20C193FC24731C9A007AE477 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				20C193FD24731CC0007AE477 /* StartFetchTorrentsAction.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,6 +268,9 @@
 			dependencies = (
 			);
 			name = Deluge;
+			packageProductDependencies = (
+				20C4130324770BCF00A982E5 /* SwiftyRedux */,
+			);
 			productName = Deluge;
 			productReference = 207F232B2461220D000312AC /* Deluge.app */;
 			productType = "com.apple.product-type.application";
@@ -239,6 +299,9 @@
 				Base,
 			);
 			mainGroup = 207F23222461220D000312AC;
+			packageReferences = (
+				20C4130224770BCF00A982E5 /* XCRemoteSwiftPackageReference "master" */,
+			);
 			productRefGroup = 207F232C2461220D000312AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -280,10 +343,15 @@
 				207F235F2461D331000312AC /* ETAView.swift in Sources */,
 				207F23312461220D000312AC /* SceneDelegate.swift in Sources */,
 				207F23592461C23D000312AC /* TorrentListViewModel.swift in Sources */,
+				209B648C24771CD200F74CCC /* PreviewProvider+Utilities.swift in Sources */,
+				20C193F924731C02007AE477 /* AppStore.swift in Sources */,
 				207F23772465F2E9000312AC /* DelugeClient.swift in Sources */,
-				207F23332461220D000312AC /* ContentView.swift in Sources */,
+				20C193F724731B27007AE477 /* AppState.swift in Sources */,
+				20C193FE24731CC0007AE477 /* StartFetchTorrentsAction.swift in Sources */,
+				20C193FB24731C23007AE477 /* AppEnvironment.swift in Sources */,
 				207F23612461D4A8000312AC /* ProgressBar.swift in Sources */,
 				207F234324612229000312AC /* SignInView.swift in Sources */,
+				209B6487247719B000F74CCC /* ViewModel.swift in Sources */,
 				207F23642464FBE5000312AC /* FilledButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,10 +489,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Deluge/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Deluge/Resources/Preview\\ Content/Preview\\ Assets.xcassets";
 				DEVELOPMENT_TEAM = 49JZ893555;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Deluge/Info.plist;
+				INFOPLIST_FILE = Deluge/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -441,10 +509,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Deluge/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Deluge/Resources/Preview\\ Content/Preview\\ Assets.xcassets";
 				DEVELOPMENT_TEAM = 49JZ893555;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Deluge/Info.plist;
+				INFOPLIST_FILE = Deluge/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -478,6 +546,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		20C4130224770BCF00A982E5 /* XCRemoteSwiftPackageReference "master" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://bitbucket.org/emilapps/swiftyredux/src/master/";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20C4130324770BCF00A982E5 /* SwiftyRedux */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20C4130224770BCF00A982E5 /* XCRemoteSwiftPackageReference "master" */;
+			productName = SwiftyRedux;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 207F23232461220D000312AC /* Project object */;
 }

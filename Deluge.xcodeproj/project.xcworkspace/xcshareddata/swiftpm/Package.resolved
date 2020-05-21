@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftyRedux",
+        "repositoryURL": "https://bitbucket.org/emilapps/swiftyredux/src/master/",
+        "state": {
+          "branch": "master",
+          "revision": "ede74ff499f601ac5143c0f825f26d3e6d16114d",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
