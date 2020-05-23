@@ -12,10 +12,10 @@
       },
       {
         "package": "SwiftyRedux",
-        "repositoryURL": "https://bitbucket.org/emilapps/swiftyredux/src/master/",
+        "repositoryURL": "https://bitbucket.org/emilapps/swiftyredux/",
         "state": {
           "branch": "master",
-          "revision": "ab118d13ad38f6111b53e66763d157687fa20084",
+          "revision": "8e1aad77cbcf21c161fd8c298bbe6a8eaf793eb6",
           "version": null
         }
       }

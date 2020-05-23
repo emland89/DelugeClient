@@ -16,9 +16,13 @@ struct StartFetchTorrentsAction: Action {
                 
         Reducer<AppState>(value: { state  in
             self.fetchPublisherFor(state: state, client: environment.delugeClient)
+        }, subscription: { state, cancellable in
+            state.fetchCancellable?.cancel()
+            state.fetchCancellable = cancellable
         }, final: { state, torrents in
             state.torrents = torrents
         })
+        
     }
     
     func fetchPublisherFor(state: AppState, client: DelugeClient) -> AnyPublisher<[Torrent], Never> {

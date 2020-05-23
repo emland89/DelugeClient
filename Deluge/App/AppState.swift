@@ -8,6 +8,9 @@
 
 import Foundation
 import KeychainStored
+import Combine
+
+// TODO: Rorder by use case
 
 struct AppState {
     
@@ -35,11 +38,10 @@ struct AppState {
     // MARK: - Properties
 
     let filters = Filter.allCases
-
     var selectedFilter: Filter = .downloading
     var torrents: [Torrent] = []
-    
     var selectedTab = 0
+    var fetchCancellable: AnyCancellable?
     
     var signInState: SignInState {
         didSet {

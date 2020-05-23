@@ -21,8 +21,7 @@ struct TorrentQueueAction: Action {
     
     func reducer(environment: AppEnvironment) -> Reducer<AppState> {
         
-        Reducer<State> { state -> AnyPublisher<Void, Never> in
-            
+        Reducer<State>(async: { state -> AnyPublisher<Void, Never> in
             guard let session = state.signInState.session else {
                 return Empty<Void, Never>().eraseToAnyPublisher()
             }
@@ -32,7 +31,7 @@ struct TorrentQueueAction: Action {
                 .actionPublisher(endpoint: session.endpoint, action: self.action.delugeAction, for: self.torrents)
                 .replaceError(with: ())
                 .eraseToAnyPublisher()
-        }
+        })
         
     }
 }

@@ -16,7 +16,7 @@ struct SignOutAction: Action {
         Reducer<AppState> { state in
             state.selectedTab = 0
             state.signInState = .signOut
-            // TODO: Cancel Fetch
+            state.fetchCancellable?.cancel()
         }
     }
 }
