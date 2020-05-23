@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 import SwiftyRedux
-import KeychainStored
 
 struct SignInAction: Action {
     
@@ -22,7 +21,7 @@ struct SignInAction: Action {
         }, value: { _ in
             self.authenticatePublisherFor(client: environment.delugeClient)
         }, final: { state, isSignedIn in
-            state.signInState = isSignedIn ? .signedIn(self.session) : .signout
+            state.signInState = isSignedIn ? .signedIn(self.session) : .signOut
         })
     }
     

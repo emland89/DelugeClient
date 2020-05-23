@@ -21,8 +21,7 @@ struct AppState {
     }
     
     enum SignInState {
-        case signout, signingIn, signedIn(Session)
-        
+        case signOut, signingIn, signedIn(Session)
         
         var session: Session? {
             guard case .signedIn(let session) = self else { return nil }
@@ -40,6 +39,8 @@ struct AppState {
     var selectedFilter: Filter = .downloading
     var torrents: [Torrent] = []
     
+    var selectedTab = 0
+    
     var signInState: SignInState {
         didSet {
             if case .signedIn(let session) = signInState  {
@@ -52,7 +53,6 @@ struct AppState {
     }
     
     // MARK: - Computed properties
-
     
     var filteredTorrents: [Torrent] {
         
@@ -81,7 +81,7 @@ struct AppState {
             signInState = .signedIn(session)
         }
         else {
-            signInState = .signout
+            signInState = .signOut
         }
     }
 }

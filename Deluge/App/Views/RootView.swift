@@ -15,23 +15,19 @@ struct RootView: View {
     var body: some View {
         
         var signInView: SignInView?
-        var torrentList: NavigationView<TorrentListView>?
+        var mainView: MainView?
         
         switch store.state.signInState {
-        case .signingIn, .signout:
+        case .signingIn, .signOut:
             signInView = SignInView()
 
         case .signedIn:
-            torrentList = NavigationView { TorrentListView() }
+            mainView = MainView()
         }
         
         return Group {
             signInView
-            torrentList
-        }
-        .onAppear {
-            print("Yala")
-            self.store.send(StartupAction())
+            mainView
         }
     }
 }
@@ -40,5 +36,6 @@ struct RootView_Previews: PreviewProvider {
     
     static var previews: some View {
         RootView()
+            .environmentObject(store)
     }
 }
