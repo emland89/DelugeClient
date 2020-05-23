@@ -7,19 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		205ED20024772C3600E56E01 /* ChangeFilterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205ED1FF24772C3600E56E01 /* ChangeFilterAction.swift */; };
+		205ED20224772FC700E56E01 /* TorrentQueueAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205ED20124772FC700E56E01 /* TorrentQueueAction.swift */; };
+		205ED2072478CA8500E56E01 /* StartupAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205ED2062478CA8500E56E01 /* StartupAction.swift */; };
+		205ED20A2478CB7500E56E01 /* KeychainStored in Frameworks */ = {isa = PBXBuildFile; productRef = 205ED2092478CB7500E56E01 /* KeychainStored */; };
 		207F232F2461220D000312AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F232E2461220D000312AC /* AppDelegate.swift */; };
 		207F23312461220D000312AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23302461220D000312AC /* SceneDelegate.swift */; };
 		207F23352461220F000312AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207F23342461220F000312AC /* Assets.xcassets */; };
 		207F23382461220F000312AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207F23372461220F000312AC /* Preview Assets.xcassets */; };
 		207F233B2461220F000312AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207F23392461220F000312AC /* LaunchScreen.storyboard */; };
 		207F234324612229000312AC /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F234224612229000312AC /* SignInView.swift */; };
-		207F234524612268000312AC /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F234424612268000312AC /* RootViewModel.swift */; };
 		207F234924612291000312AC /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F234824612291000312AC /* RootView.swift */; };
 		207F234C24612449000312AC /* Torrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F234B24612449000312AC /* Torrent.swift */; };
 		207F235224612AA1000312AC /* TorrentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F235124612AA1000312AC /* TorrentListView.swift */; };
 		207F23542461314E000312AC /* TorrentListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23532461314E000312AC /* TorrentListItemView.swift */; };
-		207F23572461BFEB000312AC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23562461BFEB000312AC /* SignInViewModel.swift */; };
-		207F23592461C23D000312AC /* TorrentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23582461C23D000312AC /* TorrentListViewModel.swift */; };
 		207F235B2461C58C000312AC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F235A2461C58C000312AC /* Credentials.swift */; };
 		207F235D2461D29C000312AC /* UploadDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F235C2461D29C000312AC /* UploadDownloadView.swift */; };
 		207F235F2461D331000312AC /* ETAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F235E2461D331000312AC /* ETAView.swift */; };
@@ -28,8 +29,8 @@
 		207F23752465E37B000312AC /* PercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23742465E37B000312AC /* PercentView.swift */; };
 		207F23772465F2E9000312AC /* DelugeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23762465F2E9000312AC /* DelugeClient.swift */; };
 		207F23792465FAD7000312AC /* TorrentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23782465FAD7000312AC /* TorrentState.swift */; };
-		209B6487247719B000F74CCC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209B6486247719B000F74CCC /* ViewModel.swift */; };
 		209B648C24771CD200F74CCC /* PreviewProvider+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209B648B24771CD200F74CCC /* PreviewProvider+Utilities.swift */; };
+		209B648E24771EF100F74CCC /* SignInAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209B648D24771EF100F74CCC /* SignInAction.swift */; };
 		20C193F724731B27007AE477 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193F624731B27007AE477 /* AppState.swift */; };
 		20C193F924731C02007AE477 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193F824731C02007AE477 /* AppStore.swift */; };
 		20C193FB24731C23007AE477 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193FA24731C23007AE477 /* AppEnvironment.swift */; };
@@ -38,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		205ED1FF24772C3600E56E01 /* ChangeFilterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFilterAction.swift; sourceTree = "<group>"; };
+		205ED20124772FC700E56E01 /* TorrentQueueAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentQueueAction.swift; sourceTree = "<group>"; };
+		205ED2062478CA8500E56E01 /* StartupAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupAction.swift; sourceTree = "<group>"; };
 		207F232B2461220D000312AC /* Deluge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deluge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207F232E2461220D000312AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		207F23302461220D000312AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,13 +50,10 @@
 		207F233A2461220F000312AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		207F233C2461220F000312AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		207F234224612229000312AC /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		207F234424612268000312AC /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		207F234824612291000312AC /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		207F234B24612449000312AC /* Torrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Torrent.swift; sourceTree = "<group>"; };
 		207F235124612AA1000312AC /* TorrentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentListView.swift; sourceTree = "<group>"; };
 		207F23532461314E000312AC /* TorrentListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentListItemView.swift; sourceTree = "<group>"; };
-		207F23562461BFEB000312AC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
-		207F23582461C23D000312AC /* TorrentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentListViewModel.swift; sourceTree = "<group>"; };
 		207F235A2461C58C000312AC /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		207F235C2461D29C000312AC /* UploadDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDownloadView.swift; sourceTree = "<group>"; };
 		207F235E2461D331000312AC /* ETAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETAView.swift; sourceTree = "<group>"; };
@@ -61,8 +62,8 @@
 		207F23742465E37B000312AC /* PercentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentView.swift; sourceTree = "<group>"; };
 		207F23762465F2E9000312AC /* DelugeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelugeClient.swift; sourceTree = "<group>"; };
 		207F23782465FAD7000312AC /* TorrentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentState.swift; sourceTree = "<group>"; };
-		209B6486247719B000F74CCC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		209B648B24771CD200F74CCC /* PreviewProvider+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewProvider+Utilities.swift"; sourceTree = "<group>"; };
+		209B648D24771EF100F74CCC /* SignInAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAction.swift; sourceTree = "<group>"; };
 		20C193F624731B27007AE477 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		20C193F824731C02007AE477 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		20C193FA24731C23007AE477 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205ED20A2478CB7500E56E01 /* KeychainStored in Frameworks */,
 				20C4130424770BCF00A982E5 /* SwiftyRedux in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +138,6 @@
 		207F234724612286000312AC /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				207F234424612268000312AC /* RootViewModel.swift */,
 				207F234824612291000312AC /* RootView.swift */,
 			);
 			path = Root;
@@ -157,7 +158,6 @@
 			children = (
 				207F235124612AA1000312AC /* TorrentListView.swift */,
 				207F23532461314E000312AC /* TorrentListItemView.swift */,
-				207F23582461C23D000312AC /* TorrentListViewModel.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -166,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				207F234224612229000312AC /* SignInView.swift */,
-				207F23562461BFEB000312AC /* SignInViewModel.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -182,7 +181,6 @@
 		207F23652464FD66000312AC /* Misc - Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				209B6486247719B000F74CCC /* ViewModel.swift */,
 				209B648B24771CD200F74CCC /* PreviewProvider+Utilities.swift */,
 			);
 			path = "Misc - Utilities";
@@ -239,15 +237,11 @@
 		20C193F524731B04007AE477 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				20C193FC24731C9A007AE477 /* Actions */,
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		20C193FC24731C9A007AE477 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
 				20C193FD24731CC0007AE477 /* StartFetchTorrentsAction.swift */,
+				209B648D24771EF100F74CCC /* SignInAction.swift */,
+				205ED1FF24772C3600E56E01 /* ChangeFilterAction.swift */,
+				205ED20124772FC700E56E01 /* TorrentQueueAction.swift */,
+				205ED2062478CA8500E56E01 /* StartupAction.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -270,6 +264,7 @@
 			name = Deluge;
 			packageProductDependencies = (
 				20C4130324770BCF00A982E5 /* SwiftyRedux */,
+				205ED2092478CB7500E56E01 /* KeychainStored */,
 			);
 			productName = Deluge;
 			productReference = 207F232B2461220D000312AC /* Deluge.app */;
@@ -301,6 +296,7 @@
 			mainGroup = 207F23222461220D000312AC;
 			packageReferences = (
 				20C4130224770BCF00A982E5 /* XCRemoteSwiftPackageReference "master" */,
+				205ED2082478CB7500E56E01 /* XCRemoteSwiftPackageReference "KeychainStored" */,
 			);
 			productRefGroup = 207F232C2461220D000312AC /* Products */;
 			projectDirPath = "";
@@ -331,10 +327,11 @@
 			files = (
 				207F23792465FAD7000312AC /* TorrentState.swift in Sources */,
 				207F23542461314E000312AC /* TorrentListItemView.swift in Sources */,
-				207F234524612268000312AC /* RootViewModel.swift in Sources */,
+				205ED20224772FC700E56E01 /* TorrentQueueAction.swift in Sources */,
 				207F235224612AA1000312AC /* TorrentListView.swift in Sources */,
+				205ED2072478CA8500E56E01 /* StartupAction.swift in Sources */,
+				209B648E24771EF100F74CCC /* SignInAction.swift in Sources */,
 				207F232F2461220D000312AC /* AppDelegate.swift in Sources */,
-				207F23572461BFEB000312AC /* SignInViewModel.swift in Sources */,
 				207F234C24612449000312AC /* Torrent.swift in Sources */,
 				207F235B2461C58C000312AC /* Credentials.swift in Sources */,
 				207F234924612291000312AC /* RootView.swift in Sources */,
@@ -342,16 +339,15 @@
 				207F235D2461D29C000312AC /* UploadDownloadView.swift in Sources */,
 				207F235F2461D331000312AC /* ETAView.swift in Sources */,
 				207F23312461220D000312AC /* SceneDelegate.swift in Sources */,
-				207F23592461C23D000312AC /* TorrentListViewModel.swift in Sources */,
 				209B648C24771CD200F74CCC /* PreviewProvider+Utilities.swift in Sources */,
 				20C193F924731C02007AE477 /* AppStore.swift in Sources */,
+				205ED20024772C3600E56E01 /* ChangeFilterAction.swift in Sources */,
 				207F23772465F2E9000312AC /* DelugeClient.swift in Sources */,
 				20C193F724731B27007AE477 /* AppState.swift in Sources */,
 				20C193FE24731CC0007AE477 /* StartFetchTorrentsAction.swift in Sources */,
 				20C193FB24731C23007AE477 /* AppEnvironment.swift in Sources */,
 				207F23612461D4A8000312AC /* ProgressBar.swift in Sources */,
 				207F234324612229000312AC /* SignInView.swift in Sources */,
-				209B6487247719B000F74CCC /* ViewModel.swift in Sources */,
 				207F23642464FBE5000312AC /* FilledButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +544,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		205ED2082478CB7500E56E01 /* XCRemoteSwiftPackageReference "KeychainStored" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/owowagency/KeychainStored";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		20C4130224770BCF00A982E5 /* XCRemoteSwiftPackageReference "master" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://bitbucket.org/emilapps/swiftyredux/src/master/";
@@ -559,6 +563,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		205ED2092478CB7500E56E01 /* KeychainStored */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 205ED2082478CB7500E56E01 /* XCRemoteSwiftPackageReference "KeychainStored" */;
+			productName = KeychainStored;
+		};
 		20C4130324770BCF00A982E5 /* SwiftyRedux */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 20C4130224770BCF00A982E5 /* XCRemoteSwiftPackageReference "master" */;

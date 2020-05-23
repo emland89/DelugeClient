@@ -22,11 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         
         
-        let client = DelugeClient(credentials: .init(endpoint: URL(string: "google.com")!, password: "")) // Remove
-        let state = AppState(credentials: .init(endpoint: URL(string: "https://deluge.orembo.com")!, password: "@Mira0329"))
-        let store = AppStore(state: state, environment: .init(delugeClient: client))
+        let store = (UIApplication.shared.delegate as! AppDelegate).store
         
-        let rootView = RootView(viewModel: .init(store: store))
+        let rootView = RootView()
             .environmentObject(store)
 
         

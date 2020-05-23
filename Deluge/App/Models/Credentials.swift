@@ -1,5 +1,5 @@
 //
-//  Credentials.swift
+//  Session.swift
 //  Deluge
 //
 //  Created by Emil Landron on 5/5/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Credentials {
+struct Session: Codable {
     let endpoint: URL
     let password: String
 }

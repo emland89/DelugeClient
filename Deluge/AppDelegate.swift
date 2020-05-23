@@ -12,9 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let store: AppStore = {
-        let client = DelugeClient(credentials: .init(endpoint: URL(string: "google.com")!, password: "")) // Remove
-        let state = AppState(credentials: .init(endpoint: URL(string: "https://deluge.orembo.com")!, password: "@Mira0329"))
-        return AppStore(state: state, environment: .init(delugeClient: client))
+        return AppStore(state: .init(), environment: .init(delugeClient: .init()))
     }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

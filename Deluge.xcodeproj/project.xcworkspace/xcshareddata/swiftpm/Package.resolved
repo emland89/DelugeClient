@@ -2,11 +2,20 @@
   "object": {
     "pins": [
       {
+        "package": "KeychainStored",
+        "repositoryURL": "https://github.com/owowagency/KeychainStored",
+        "state": {
+          "branch": null,
+          "revision": "3f43efaa85d981f3819c9bca6a4f488d9cb534e9",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "SwiftyRedux",
         "repositoryURL": "https://bitbucket.org/emilapps/swiftyredux/src/master/",
         "state": {
           "branch": "master",
-          "revision": "ede74ff499f601ac5143c0f825f26d3e6d16114d",
+          "revision": "ab118d13ad38f6111b53e66763d157687fa20084",
           "version": null
         }
       }

@@ -10,7 +10,6 @@ import Foundation
 import Combine
 import SwiftyRedux
 
- 
 struct StartFetchTorrentsAction: Action {
     
     func reducer(environment: AppEnvironment) -> Reducer<AppState> {
@@ -26,12 +25,12 @@ struct StartFetchTorrentsAction: Action {
         
         Timer.publish(every: 1, on: RunLoop.current, in: .default).autoconnect().flatMap { _ -> AnyPublisher<[Torrent], Never>  in
             
-            guard let credentials = state.credentials else {
+            guard let session = state.signInState.session else {
                 return Empty<[Torrent], Never>().eraseToAnyPublisher()
             }
             
             return client
-                .fetchAllPublisher(credentials: credentials)
+                .fetchAllPublisher(endpoint: session.endpoint)
                 .catch { error -> Empty<[Torrent], Never>in
                     print(error)
                     return Empty<[Torrent], Never>()

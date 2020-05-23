@@ -10,36 +10,40 @@ import SwiftUI
 
 struct TorrentListView: View {
     
-    @ObservedObject var viewModel: TorrentListViewModel
-    
+    @EnvironmentObject var store: AppStore
+
     var body: some View {
         
         List {
             Section(header: filter) {
-                ForEach(self.viewModel.torrents) { torrent in
+                ForEach(self.store.state.filteredTorrents) { torrent in
                     TorrentListItemView(torrent: torrent)
                         .padding(.vertical, 6)
                         .contextMenu {
-                            Button("Resume", action: { self.viewModel.resume(torrent) })
-                            Button("Pause", action: { self.viewModel.pause(torrent) })
+                            Button("Resume", action: { self.setQueue(action: .resume, for: torrent) })
+                            Button("Pause", action: {  self.setQueue(action: .pause, for: torrent)})
                             Divider()
-                            Button("Top", action: { self.viewModel.top(torrent) })
-                            Button("Up", action: { self.viewModel.up(torrent) })
-                            Button("Down", action: { self.viewModel.down(torrent) })
-                            Button("Bottom", action: { self.viewModel.bottom(torrent) })
+                            Button("Top", action: {  self.setQueue(action: .top, for: torrent) })
+                            Button("Up", action: {  self.setQueue(action: .up, for: torrent) })
+                            Button("Down", action: {  self.setQueue(action: .down, for: torrent) })
+                            Button("Bottom", action: { self.setQueue(action: .bottom, for: torrent) })
                     }
                 }
             }
         }
+        .onAppear(perform: {
+            self.store.send(StartFetchTorrentsAction())
+        })
         .navigationBarTitle("Torrents")
-        .onAppear(perform: viewModel.setup)
     }
     
     private var filter: some View {
         
-        Picker(selection: $viewModel.selectedFilter, label: EmptyView()) {
+        Picker(selection: store.binding(for: \.selectedFilter, toAction: { filter in
+            ChangeFilterAction(filter: filter)
+        }), label: EmptyView()) {
             
-            ForEach(viewModel.filters) { filter -> Text in
+            ForEach(store.state.filters) { filter -> Text in
                 
                 switch filter {
                 case .downloading:
@@ -54,11 +58,14 @@ struct TorrentListView: View {
                 case .paused:
                     return Text("Paused")
                 }
-                
             }
         }
         .pickerStyle(SegmentedPickerStyle())
         .padding(.vertical)
+    }
+    
+    private func setQueue(action: TorrentQueueAction.Action, for torrents: Torrent...) {
+        self.store.send(TorrentQueueAction(action: action, torrents: torrents))
     }
 }
 
@@ -67,7 +74,8 @@ struct TorrentsListView_Previews: PreviewProvider {
     static var previews: some View {
        
         return NavigationView {
-            TorrentListView(viewModel: .init(store: store))
+            TorrentListView()
+                .environmentObject(store)
         }
     }
 }

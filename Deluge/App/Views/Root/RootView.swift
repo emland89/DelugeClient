@@ -10,35 +10,35 @@ import SwiftUI
 
 struct RootView: View {
     
-    @ObservedObject var viewModel: RootViewModel
-    
+    @EnvironmentObject var store: AppStore
+
     var body: some View {
         
         var signInView: SignInView?
         var torrentList: NavigationView<TorrentListView>?
         
-        switch viewModel.attached {
-        case .signIn(let viewModel):
-            signInView = SignInView(viewModel: viewModel)
-            
-        case .torrentList(let viewModel):
-            torrentList = NavigationView { TorrentListView(viewModel: viewModel) }
-            
-        case .none:
-            break
+        switch store.state.signInState {
+        case .signingIn, .signout:
+            signInView = SignInView()
+
+        case .signedIn:
+            torrentList = NavigationView { TorrentListView() }
         }
         
         return Group {
             signInView
             torrentList
         }
-        .onAppear(perform: viewModel.setup)
+        .onAppear {
+            print("Yala")
+            self.store.send(StartupAction())
+        }
     }
 }
 
 struct RootView_Previews: PreviewProvider {
     
     static var previews: some View {
-        RootView(viewModel: .init(store: store))
+        RootView()
     }
 }

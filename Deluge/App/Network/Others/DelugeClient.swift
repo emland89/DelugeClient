@@ -25,21 +25,15 @@ final class DelugeClient {
         let method: String
         let params: [P]
     }
-    
-    // MARK: - Properties
-     
-    private let credentials: Credentials
-    
-    init(credentials: Credentials) {
-        self.credentials = credentials
-    }
+             
     
     // MARK: - Actions
+
     
-    func authenticatePublisher() -> AnyPublisher<Void, Swift.Error> {
+    func authenticatePublisher(endpoint: URL, password: String) -> AnyPublisher<Void, Swift.Error> {
         
         enum Error: Swift.Error {
-            case invalidCredentials(Credentials)
+            case invalidSession(URL)
             case connection(Swift.Error)
         }
         
@@ -47,22 +41,22 @@ final class DelugeClient {
             let result: Bool
         }
         
-        let body = RequestBody(method: "auth.login", params: [credentials.password])
+        let body = RequestBody(method: "auth.login", params: [password])
         
-        return dataTaskPublisher(body: body, decodingType: Response.self)
+        return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: Response.self)
             .tryMap { response in
                 guard !response.result else { return }
-                throw Error.invalidCredentials(self.credentials)
+                throw Error.invalidSession(endpoint)
         }
         .eraseToAnyPublisher()
     }
     
+    
     func addMagnetPublisher(url: URL) -> AnyPublisher<Void, Swift.Error> {
         fatalError()
     }
-    
-    // TODO: Remove
-    func fetchAllPublisher() -> AnyPublisher<[Torrent], Swift.Error> {
+
+    func fetchAllPublisher(endpoint: URL) -> AnyPublisher<[Torrent], Swift.Error> {
         
         struct Response: Decodable {
             
@@ -82,37 +76,12 @@ final class DelugeClient {
         let fields = ["queue", "name", "hash", "upload_payload_rate", "download_payload_rate", "progress", "state", "label", "eta"]
         let body = RequestBody(method: "core.get_torrents_status", params: [[], fields])
         
-        return dataTaskPublisher(body: body, decodingType: Response.self)
+        return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: Response.self)
             .map { $0.result}
             .eraseToAnyPublisher()
     }
     
-    func fetchAllPublisher(credentials: Credentials) -> AnyPublisher<[Torrent], Swift.Error> {
-        
-        struct Response: Decodable {
-            
-            private enum CodingKeys: String, CodingKey {
-                case result
-            }
-            
-            let result: [Torrent]
-            
-            init(from decoder: Decoder) throws {
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                let decoded = try container.decode([String: Torrent].self, forKey: .result)
-                result = decoded.map { $0.value }
-            }
-        }
-        
-        let fields = ["queue", "name", "hash", "upload_payload_rate", "download_payload_rate", "progress", "state", "label", "eta"]
-        let body = RequestBody(method: "core.get_torrents_status", params: [[], fields])
-        
-        return dataTaskPublisher(endpoint: credentials.endpoint, body: body, decodingType: Response.self)
-            .map { $0.result}
-            .eraseToAnyPublisher()
-    }
-    
-    func actionPublisher(_ action: Action, for torrents: [Torrent]) -> AnyPublisher<Void, Swift.Error> {
+    func actionPublisher(endpoint: URL, action: Action, for torrents: [Torrent]) -> AnyPublisher<Void, Swift.Error> {
         
         // TODO: Check for error
         struct Response: Decodable { }
@@ -120,16 +89,12 @@ final class DelugeClient {
         let hashes = torrents.map { $0.hash }
         let body = RequestBody(method: action.rawValue, params: [hashes])
         
-        return dataTaskPublisher(body: body, decodingType: Response.self)
+        return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: Response.self)
             .map { _ in }
             .eraseToAnyPublisher()
     }
     
     // MARK: - Helpers
-    
-    private func dataTaskPublisher<D: Decodable, P: Encodable>(body: RequestBody<P>, decodingType: D.Type) -> AnyPublisher<D, Error> {
-        dataTaskPublisher(endpoint: credentials.endpoint, body: body, decodingType: decodingType)
-    }
     
     private func dataTaskPublisher<D: Decodable, P: Encodable>(endpoint: URL, body: RequestBody<P>, decodingType: D.Type) -> AnyPublisher<D, Error> {
         
