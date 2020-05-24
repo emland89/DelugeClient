@@ -17,7 +17,7 @@ struct RootView: View {
         var signInView: SignInView?
         var mainView: MainView?
         
-        switch store.state.signInState {
+        switch store.state.session.signInState {
         case .signingIn, .signOut:
             signInView = SignInView()
 

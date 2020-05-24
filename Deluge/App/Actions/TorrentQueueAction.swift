@@ -22,7 +22,7 @@ struct TorrentQueueAction: Action {
     func reducer(environment: AppEnvironment) -> Reducer<AppState> {
         
         Reducer<State>(async: { state -> AnyPublisher<Void, Never> in
-            guard let session = state.signInState.session else {
+            guard let session = state.session.signInState.session else {
                 return Empty<Void, Never>().eraseToAnyPublisher()
             }
             

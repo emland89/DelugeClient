@@ -11,6 +11,8 @@
 		200A7EF42478D2A6008F0E15 /* SelectTabAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A7EF32478D2A6008F0E15 /* SelectTabAction.swift */; };
 		200A7EF62478D4D8008F0E15 /* SignOutAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A7EF52478D4D8008F0E15 /* SignOutAction.swift */; };
 		204EFF94247985E100E1615A /* SwiftyRedux in Frameworks */ = {isa = PBXBuildFile; productRef = 204EFF93247985E100E1615A /* SwiftyRedux */; };
+		204EFF97247A2F8700E1615A /* ListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EFF96247A2F8700E1615A /* ListState.swift */; };
+		204EFF99247A31AB00E1615A /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EFF98247A31AB00E1615A /* SessionState.swift */; };
 		205ED20024772C3600E56E01 /* ChangeFilterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205ED1FF24772C3600E56E01 /* ChangeFilterAction.swift */; };
 		205ED20224772FC700E56E01 /* TorrentQueueAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205ED20124772FC700E56E01 /* TorrentQueueAction.swift */; };
 		205ED20A2478CB7500E56E01 /* KeychainStored in Frameworks */ = {isa = PBXBuildFile; productRef = 205ED2092478CB7500E56E01 /* KeychainStored */; };
@@ -44,6 +46,8 @@
 		200A7EF12478D145008F0E15 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		200A7EF32478D2A6008F0E15 /* SelectTabAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTabAction.swift; sourceTree = "<group>"; };
 		200A7EF52478D4D8008F0E15 /* SignOutAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutAction.swift; sourceTree = "<group>"; };
+		204EFF96247A2F8700E1615A /* ListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListState.swift; sourceTree = "<group>"; };
+		204EFF98247A31AB00E1615A /* SessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionState.swift; sourceTree = "<group>"; };
 		205ED1FF24772C3600E56E01 /* ChangeFilterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFilterAction.swift; sourceTree = "<group>"; };
 		205ED20124772FC700E56E01 /* TorrentQueueAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentQueueAction.swift; sourceTree = "<group>"; };
 		207F232B2461220D000312AC /* Deluge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deluge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +91,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		204EFF95247A2F7800E1615A /* States */ = {
+			isa = PBXGroup;
+			children = (
+				20C193F624731B27007AE477 /* AppState.swift */,
+				204EFF96247A2F8700E1615A /* ListState.swift */,
+				204EFF98247A31AB00E1615A /* SessionState.swift */,
+			);
+			path = States;
+			sourceTree = "<group>";
+		};
 		207F23222461220D000312AC = {
 			isa = PBXGroup;
 			children = (
@@ -125,8 +139,8 @@
 		207F23462461227A000312AC /* App */ = {
 			isa = PBXGroup;
 			children = (
+				204EFF95247A2F7800E1615A /* States */,
 				20C193FA24731C23007AE477 /* AppEnvironment.swift */,
-				20C193F624731B27007AE477 /* AppState.swift */,
 				20C193F824731C02007AE477 /* AppStore.swift */,
 				20C193F524731B04007AE477 /* Actions */,
 				207F23652464FD66000312AC /* Misc - Utilities */,
@@ -317,6 +331,7 @@
 			files = (
 				207F23792465FAD7000312AC /* TorrentState.swift in Sources */,
 				207F23542461314E000312AC /* TorrentListItemView.swift in Sources */,
+				204EFF99247A31AB00E1615A /* SessionState.swift in Sources */,
 				205ED20224772FC700E56E01 /* TorrentQueueAction.swift in Sources */,
 				207F235224612AA1000312AC /* TorrentListView.swift in Sources */,
 				209B648E24771EF100F74CCC /* SignInAction.swift in Sources */,
@@ -335,6 +350,7 @@
 				20C193F924731C02007AE477 /* AppStore.swift in Sources */,
 				205ED20024772C3600E56E01 /* ChangeFilterAction.swift in Sources */,
 				207F23772465F2E9000312AC /* DelugeClient.swift in Sources */,
+				204EFF97247A2F8700E1615A /* ListState.swift in Sources */,
 				20C193F724731B27007AE477 /* AppState.swift in Sources */,
 				20C193FE24731CC0007AE477 /* StartFetchTorrentsAction.swift in Sources */,
 				20C193FB24731C23007AE477 /* AppEnvironment.swift in Sources */,

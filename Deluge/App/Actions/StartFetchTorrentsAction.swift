@@ -17,10 +17,10 @@ struct StartFetchTorrentsAction: Action {
         Reducer<AppState>(value: { state  in
             self.fetchPublisherFor(state: state, client: environment.delugeClient)
         }, subscription: { state, cancellable in
-            state.fetchCancellable?.cancel()
-            state.fetchCancellable = cancellable
+            state.list.fetchCancellable?.cancel()
+            state.list.fetchCancellable = cancellable
         }, final: { state, torrents in
-            state.torrents = torrents
+            state.list.torrents = torrents
         })
         
     }
@@ -29,7 +29,7 @@ struct StartFetchTorrentsAction: Action {
         
         Timer.publish(every: 1, on: RunLoop.current, in: .default).autoconnect().flatMap { _ -> AnyPublisher<[Torrent], Never>  in
             
-            guard let session = state.signInState.session else {
+            guard let session = state.session.signInState.session else {
                 return Empty<[Torrent], Never>().eraseToAnyPublisher()
             }
             

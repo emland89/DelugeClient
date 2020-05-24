@@ -12,11 +12,15 @@ struct TorrentListView: View {
     
     @EnvironmentObject var store: AppStore
 
+    var state: ListState {
+        store.state.list
+    }
+    
     var body: some View {
         
         List {
             Section(header: filter) {
-                ForEach(self.store.state.filteredTorrents) { torrent in
+                ForEach(self.state.filteredTorrents) { torrent in
                     TorrentListItemView(torrent: torrent)
                         .padding(.vertical, 6)
                         .contextMenu {
@@ -39,11 +43,11 @@ struct TorrentListView: View {
     
     private var filter: some View {
         
-        Picker(selection: store.binding(for: \.selectedFilter, toAction: { filter in
+        Picker(selection: store.binding(for: \.list.selectedFilter, toAction: { filter in
             ChangeFilterAction(filter: filter)
         }), label: EmptyView()) {
             
-            ForEach(store.state.filters) { filter -> Text in
+            ForEach(state.filters) { filter -> Text in
                 
                 switch filter {
                 case .downloading:

@@ -17,11 +17,11 @@ struct SignInAction: Action {
     func reducer(environment: AppEnvironment) -> Reducer<AppState> {
         
         Reducer<AppState>(initial: { state in
-            state.signInState = .signingIn
+            state.session.signInState = .signingIn
         }, value: { _ in
             self.authenticatePublisherFor(client: environment.delugeClient)
         }, final: { state, isSignedIn in
-            state.signInState = isSignedIn ? .signedIn(self.session) : .signOut
+            state.session.signInState = isSignedIn ? .signedIn(self.session) : .signOut
         })
     }
     

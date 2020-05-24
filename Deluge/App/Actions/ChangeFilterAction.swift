@@ -11,11 +11,11 @@ import SwiftyRedux
 
 struct ChangeFilterAction: Action {
     
-    let filter: AppState.Filter
+    let filter: ListState.Filter
     
     func reducer(environment: AppEnvironment) -> Reducer<AppState> {
         Reducer { state in
-            state.selectedFilter = self.filter
+            state.list.selectedFilter = self.filter
         }
     }
 }
