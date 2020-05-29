@@ -42,7 +42,6 @@ struct SessionState {
     // MARK: - Life Cycle
 
     init() {
-        
         if let session = Self.savedSession {
             signInState = .signedIn(session)
         }

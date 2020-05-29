@@ -27,9 +27,8 @@ struct SignInAction: Action {
     
     private func authenticatePublisherFor(client: DelugeClient) -> AnyPublisher<Bool, Never> {
         
-        client.authenticatePublisher(endpoint: session.endpoint, password: session.password).map {
-            true
-        }
+        client.authenticatePublisher(endpoint: session.endpoint, password: session.password)
+        .map { $0 }
         .catch { error -> Just<Bool> in
             print(error)
             return Just(false)
