@@ -13,10 +13,12 @@ struct SignOutAction: Action {
         
     func reducer(environment: AppEnvironment) -> Reducer<AppState> {
         
-        Reducer<AppState> { state in
-            state.selectedTab = 0
-            state.session.signInState = .signOut
-            state.list.fetchCancellable?.cancel()
+        Reducer {
+            SyncReducer { state in
+                state.selectedTab = 0
+                state.session.signInState = .signOut
+                state.list.fetchCancellable?.cancel()
+            }
         }
     }
 }

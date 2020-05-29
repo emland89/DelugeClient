@@ -15,8 +15,10 @@ struct SelectTabAction: Action {
     
     func reducer(environment: AppEnvironment) -> Reducer<AppState> {
         
-        Reducer<AppState> { state in
-            state.selectedTab = self.tab
+        Reducer {
+            SyncReducer { state in
+                state.selectedTab = self.tab
+            }
         }
     }
 }

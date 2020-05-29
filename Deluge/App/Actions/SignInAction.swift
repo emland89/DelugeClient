@@ -16,23 +16,21 @@ struct SignInAction: Action {
     
     func reducer(environment: AppEnvironment) -> Reducer<AppState> {
         
-        Reducer<AppState>(initial: { state in
-            state.session.signInState = .signingIn
-        }, value: { _ in
-            self.authenticatePublisherFor(client: environment.delugeClient)
-        }, final: { state, isSignedIn in
-            state.session.signInState = isSignedIn ? .signedIn(self.session) : .signOut
-        })
-    }
-    
-    private func authenticatePublisherFor(client: DelugeClient) -> AnyPublisher<Bool, Never> {
-        
-        client.authenticatePublisher(endpoint: session.endpoint, password: session.password)
-        .map { $0 }
-        .catch { error -> Just<Bool> in
-            print(error)
-            return Just(false)
+        Reducer {
+            SyncReducer<AppState> { state in
+                state.session.signInState = .signingIn
+            }
+            
+            AsyncReducer<AppState, Bool, DelugeClient.Error>(publisher: { _ in
+                environment.delugeClient.authenticatePublisher(endpoint: self.session.endpoint, password: self.session.password)
+                
+            }, result: { state, isSignedIn in
+                state.session.signInState = isSignedIn ? .signedIn(self.session) : .signOut
+                
+            }, catch: { state, error in
+                state.session.isSignInErrorShown = true
+                print(error)
+            })
         }
-        .eraseToAnyPublisher()
     }
 }

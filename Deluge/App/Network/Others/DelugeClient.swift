@@ -13,13 +13,13 @@ final class DelugeClient {
     
     // MARK: - Types
     
-    enum ClientError: Error {
+    enum Error: Swift.Error {
         case server(ServerError)
-        case parsing(Error)
-        case other(Error)
+        case parsing(Swift.Error)
+        case other(Swift.Error)
     }
     
-    struct ServerError: Error, Decodable {
+    struct ServerError: Swift.Error, Decodable {
         let code: Int
         let message: String
     }
@@ -50,7 +50,7 @@ final class DelugeClient {
     // MARK: - Actions
 
     
-    func authenticatePublisher(endpoint: URL, password: String) -> AnyPublisher<Bool, ClientError> {
+    func authenticatePublisher(endpoint: URL, password: String) -> AnyPublisher<Bool, Error> {
         let body = RequestBody(method: "auth.login", params: [password])
         return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: Bool.self)
     }
@@ -59,7 +59,7 @@ final class DelugeClient {
         fatalError()
     }
 
-    func fetchAllPublisher(endpoint: URL) -> AnyPublisher<[Torrent], ClientError> {
+    func fetchAllPublisher(endpoint: URL) -> AnyPublisher<[Torrent], Error> {
         let fields = ["queue", "name", "hash", "upload_payload_rate", "download_payload_rate", "progress", "state", "label", "eta"]
         let body = RequestBody(method: "core.get_torrents_status", params: [[], fields])
         
@@ -68,7 +68,7 @@ final class DelugeClient {
         .eraseToAnyPublisher()
     }
     
-    func actionPublisher(endpoint: URL, action: Action, for torrents: [Torrent]) -> AnyPublisher<Void, ClientError> {
+    func actionPublisher(endpoint: URL, action: Action, for torrents: [Torrent]) -> AnyPublisher<Void, Error> {
                 
         let hashes = torrents.map { $0.hash }
         let body = RequestBody(method: action.rawValue, params: [hashes])
@@ -80,7 +80,7 @@ final class DelugeClient {
     
     // MARK: - Helpers
     
-    private func dataTaskPublisher<D: Decodable, P: Encodable>(endpoint: URL, body: RequestBody<P>, decodingType: D.Type) -> AnyPublisher<D, ClientError> {
+    private func dataTaskPublisher<D: Decodable, P: Encodable>(endpoint: URL, body: RequestBody<P>, decodingType: D.Type) -> AnyPublisher<D, Error> {
         
         var request = URLRequest(url: endpoint.appendingPathComponent("json"))
         request.httpMethod = "POST"
@@ -91,12 +91,12 @@ final class DelugeClient {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         return URLSession.shared.dataTaskPublisher(for: request).mapError { error in
-            ClientError.parsing(error)
+            Error.parsing(error)
         }
         .map { $0.data }
         .decode(type: Response<D>.self, decoder: decoder)
         .mapError { error in
-            ClientError.parsing(error)
+            Error.parsing(error)
         }
         .tryMap { response in
             if let result = response.result {
@@ -108,7 +108,7 @@ final class DelugeClient {
             fatalError()
         }
         .mapError { error in
-            ClientError.server(error as! DelugeClient.ServerError)
+            Error.server(error as! DelugeClient.ServerError)
         }
         .eraseToAnyPublisher()
     }

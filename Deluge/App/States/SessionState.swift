@@ -28,6 +28,8 @@ struct SessionState {
 
     // MARK: - Properties
     
+    var isSignInErrorShown = false
+    
     var signInState: SignInState {
         didSet {
             if case .signedIn(let session) = signInState  {

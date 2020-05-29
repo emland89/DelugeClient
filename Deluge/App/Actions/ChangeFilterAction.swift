@@ -14,8 +14,10 @@ struct ChangeFilterAction: Action {
     let filter: ListState.Filter
     
     func reducer(environment: AppEnvironment) -> Reducer<AppState> {
-        Reducer { state in
-            state.list.selectedFilter = self.filter
+        Reducer {
+            SyncReducer { state in
+                state.list.selectedFilter = self.filter
+            }
         }
     }
 }

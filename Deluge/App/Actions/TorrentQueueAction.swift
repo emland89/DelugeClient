@@ -21,18 +21,18 @@ struct TorrentQueueAction: Action {
     
     func reducer(environment: AppEnvironment) -> Reducer<AppState> {
         
-        Reducer<State>(async: { state -> AnyPublisher<Void, Never> in
-            guard let session = state.session.signInState.session else {
-                return Empty<Void, Never>().eraseToAnyPublisher()
-            }
-            
-            return environment
-                .delugeClient
-                .actionPublisher(endpoint: session.endpoint, action: self.action.delugeAction, for: self.torrents)
-                .replaceError(with: ())
+        Reducer {
+
+            AsyncReducer(publisher: { state in
+                Just(state.session.signInState.session)
+                    .compactMap { $0 }
+                    .setFailureType(to: DelugeClient.Error.self)
+                    .flatMap { session in
+                        environment.delugeClient.actionPublisher(endpoint: session.endpoint, action: self.action.delugeAction, for: self.torrents)
+                }
                 .eraseToAnyPublisher()
-        })
-        
+            })
+        }
     }
 }
 
