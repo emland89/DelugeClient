@@ -27,7 +27,12 @@ struct StartFetchTorrentsAction: Action {
                 state.list.torrents = torrents
                 
             }, catch: { state, error in
-                print(error)
+                guard let session = state.session.signInState.session else {
+                    state.session.signInState = .signOut
+                    return nil
+                }
+                
+                return SignInAction(session: session).reducer(environment: environment)
             })
         }
     }
@@ -36,8 +41,8 @@ struct StartFetchTorrentsAction: Action {
         
         Timer.publish(every: 1, on: RunLoop.current, in: .default)
         .autoconnect()
-        .setFailureType(to: DelugeClient.Error.self)
         .compactMap { _ in state.session.signInState.session }
+        .setFailureType(to: DelugeClient.Error.self)
         .flatMap { session in
             client.fetchAllPublisher(endpoint: session.endpoint)
         }

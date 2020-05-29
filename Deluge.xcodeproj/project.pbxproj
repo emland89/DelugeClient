@@ -10,6 +10,7 @@
 		200A7EF22478D145008F0E15 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A7EF12478D145008F0E15 /* MainView.swift */; };
 		200A7EF42478D2A6008F0E15 /* SelectTabAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A7EF32478D2A6008F0E15 /* SelectTabAction.swift */; };
 		200A7EF62478D4D8008F0E15 /* SignOutAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A7EF52478D4D8008F0E15 /* SignOutAction.swift */; };
+		202F7BA52480E383002485F7 /* SwiftyRedux in Frameworks */ = {isa = PBXBuildFile; productRef = 202F7BA42480E383002485F7 /* SwiftyRedux */; };
 		204EFF97247A2F8700E1615A /* ListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EFF96247A2F8700E1615A /* ListState.swift */; };
 		204EFF99247A31AB00E1615A /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EFF98247A31AB00E1615A /* SessionState.swift */; };
 		205ED20024772C3600E56E01 /* ChangeFilterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205ED1FF24772C3600E56E01 /* ChangeFilterAction.swift */; };
@@ -39,7 +40,6 @@
 		20C193F924731C02007AE477 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193F824731C02007AE477 /* AppStore.swift */; };
 		20C193FB24731C23007AE477 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193FA24731C23007AE477 /* AppEnvironment.swift */; };
 		20C193FE24731CC0007AE477 /* StartFetchTorrentsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193FD24731CC0007AE477 /* StartFetchTorrentsAction.swift */; };
-		20D63C612480D79F004038A5 /* SwiftyRedux in Frameworks */ = {isa = PBXBuildFile; productRef = 20D63C602480D79F004038A5 /* SwiftyRedux */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,7 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				205ED20A2478CB7500E56E01 /* KeychainStored in Frameworks */,
-				20D63C612480D79F004038A5 /* SwiftyRedux in Frameworks */,
+				202F7BA52480E383002485F7 /* SwiftyRedux in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +268,7 @@
 			name = Deluge;
 			packageProductDependencies = (
 				205ED2092478CB7500E56E01 /* KeychainStored */,
-				20D63C602480D79F004038A5 /* SwiftyRedux */,
+				202F7BA42480E383002485F7 /* SwiftyRedux */,
 			);
 			productName = Deluge;
 			productReference = 207F232B2461220D000312AC /* Deluge.app */;
@@ -300,7 +300,7 @@
 			mainGroup = 207F23222461220D000312AC;
 			packageReferences = (
 				205ED2082478CB7500E56E01 /* XCRemoteSwiftPackageReference "KeychainStored" */,
-				20D63C5F2480D79F004038A5 /* XCRemoteSwiftPackageReference "swiftyredux" */,
+				202F7BA32480E383002485F7 /* XCRemoteSwiftPackageReference "swiftyredux" */,
 			);
 			productRefGroup = 207F232C2461220D000312AC /* Products */;
 			projectDirPath = "";
@@ -552,6 +552,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		202F7BA32480E383002485F7 /* XCRemoteSwiftPackageReference "swiftyredux" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://bitbucket.org/emilapps/swiftyredux";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		205ED2082478CB7500E56E01 /* XCRemoteSwiftPackageReference "KeychainStored" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/owowagency/KeychainStored";
@@ -560,26 +568,18 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		20D63C5F2480D79F004038A5 /* XCRemoteSwiftPackageReference "swiftyredux" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://bitbucket.org/emilapps/swiftyredux";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		202F7BA42480E383002485F7 /* SwiftyRedux */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 202F7BA32480E383002485F7 /* XCRemoteSwiftPackageReference "swiftyredux" */;
+			productName = SwiftyRedux;
+		};
 		205ED2092478CB7500E56E01 /* KeychainStored */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 205ED2082478CB7500E56E01 /* XCRemoteSwiftPackageReference "KeychainStored" */;
 			productName = KeychainStored;
-		};
-		20D63C602480D79F004038A5 /* SwiftyRedux */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 20D63C5F2480D79F004038A5 /* XCRemoteSwiftPackageReference "swiftyredux" */;
-			productName = SwiftyRedux;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

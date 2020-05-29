@@ -30,6 +30,7 @@ struct SignInAction: Action {
             }, catch: { state, error in
                 state.session.isSignInErrorShown = true
                 print(error)
+                return nil
             })
         }
     }
