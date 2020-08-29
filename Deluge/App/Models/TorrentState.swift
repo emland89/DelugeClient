@@ -16,4 +16,5 @@ enum TorrentState: String, Codable {
     case queued = "Queued"
     case seeding = "Seeding"
     case paused = "Paused"
+    case error = "Error"
 }

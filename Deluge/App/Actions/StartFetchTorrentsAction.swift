@@ -14,7 +14,7 @@ struct StartFetchTorrentsAction: Action {
     
     func reducer(environment: AppEnvironment) -> Reducer<AppState> {
                 
-        Reducer {
+        Reducer(components: {
             
             AsyncReducer(publisher: { state in
                 self.fetchPublisherFor(state: state, client: environment.delugeClient)
@@ -22,11 +22,12 @@ struct StartFetchTorrentsAction: Action {
             }, cancellation: { state, cancellable in
                 state.list.fetchCancellable?.cancel()
                 state.list.fetchCancellable = cancellable
-
+                
             }, result: { state, torrents in
                 state.list.torrents = torrents
                 
             }, catch: { state, error in
+                print(error)
                 guard let session = state.session.signInState.session else {
                     state.session.signInState = .signOut
                     return nil
@@ -34,7 +35,7 @@ struct StartFetchTorrentsAction: Action {
                 
                 return SignInAction(session: session).reducer(environment: environment)
             })
-        }
+        })
     }
     
     func fetchPublisherFor(state: AppState, client: DelugeClient) -> AnyPublisher<[Torrent], DelugeClient.Error> {

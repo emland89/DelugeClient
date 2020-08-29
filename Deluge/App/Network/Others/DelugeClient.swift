@@ -16,7 +16,7 @@ final class DelugeClient {
     enum Error: Swift.Error {
         case server(ServerError)
         case parsing(Swift.Error)
-        case other(Swift.Error)
+        case network(Swift.Error)
     }
     
     struct ServerError: Swift.Error, Decodable {
@@ -45,10 +45,8 @@ final class DelugeClient {
     }
     
     private struct EmptyResponseBody: Decodable { }
-
     
     // MARK: - Actions
-
     
     func authenticatePublisher(endpoint: URL, password: String) -> AnyPublisher<Bool, Error> {
         let body = RequestBody(method: "auth.login", params: [password])
@@ -58,24 +56,24 @@ final class DelugeClient {
     func addMagnetPublisher(url: URL) -> AnyPublisher<Void, Swift.Error> {
         fatalError()
     }
-
+    
     func fetchAllPublisher(endpoint: URL) -> AnyPublisher<[Torrent], Error> {
         let fields = ["queue", "name", "hash", "upload_payload_rate", "download_payload_rate", "progress", "state", "label", "eta"]
         let body = RequestBody(method: "core.get_torrents_status", params: [[], fields])
         
         return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: [String: Torrent].self)
-        .map { Array($0.values) }
-        .eraseToAnyPublisher()
+            .map { Array($0.values) }
+            .eraseToAnyPublisher()
     }
     
     func actionPublisher(endpoint: URL, action: Action, for torrents: [Torrent]) -> AnyPublisher<Void, Error> {
-                
+        
         let hashes = torrents.map { $0.hash }
         let body = RequestBody(method: action.rawValue, params: [hashes])
         
         return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: EmptyResponseBody.self)
-        .map { _ in }
-        .eraseToAnyPublisher()
+            .map { _ in }
+            .eraseToAnyPublisher()
     }
     
     // MARK: - Helpers
@@ -90,26 +88,28 @@ final class DelugeClient {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
-        return URLSession.shared.dataTaskPublisher(for: request).mapError { error in
-            Error.parsing(error)
-        }
-        .map { $0.data }
-        .decode(type: Response<D>.self, decoder: decoder)
-        .mapError { error in
-            Error.parsing(error)
-        }
-        .tryMap { response in
-            if let result = response.result {
-                return result
+        return URLSession.shared
+            .dataTaskPublisher(for: request)
+            .mapError { error in
+                Error.network(error)
             }
-            else if let error = response.error {
-                throw error
+            .map { $0.data }
+            .decode(type: Response<D>.self, decoder: decoder)
+            .mapError { error in
+                Error.parsing(error)
             }
-            fatalError()
-        }
-        .mapError { error in
-            Error.server(error as! DelugeClient.ServerError)
-        }
-        .eraseToAnyPublisher()
+            .tryMap { response in
+                if let result = response.result {
+                    return result
+                }
+                else if let error = response.error {
+                    throw Error.server(error)
+                }
+                throw Error.server(DelugeClient.ServerError(code: -1, message: "Response is empty"))
+            }
+            .mapError { error in
+                 error as! Error
+            }
+            .eraseToAnyPublisher()
     }
 }
