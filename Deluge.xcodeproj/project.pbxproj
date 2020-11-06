@@ -10,7 +10,7 @@
 		200A7EF22478D145008F0E15 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A7EF12478D145008F0E15 /* MainView.swift */; };
 		200A7EF42478D2A6008F0E15 /* SelectTabAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A7EF32478D2A6008F0E15 /* SelectTabAction.swift */; };
 		200A7EF62478D4D8008F0E15 /* SignOutAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A7EF52478D4D8008F0E15 /* SignOutAction.swift */; };
-		202F7BA52480E383002485F7 /* SwiftyRedux in Frameworks */ = {isa = PBXBuildFile; productRef = 202F7BA42480E383002485F7 /* SwiftyRedux */; };
+		204CD62F254FCA5F00B9D5FE /* SwiftyRedux in Frameworks */ = {isa = PBXBuildFile; productRef = 204CD62E254FCA5F00B9D5FE /* SwiftyRedux */; };
 		204EFF97247A2F8700E1615A /* ListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EFF96247A2F8700E1615A /* ListState.swift */; };
 		204EFF99247A31AB00E1615A /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EFF98247A31AB00E1615A /* SessionState.swift */; };
 		205ED20024772C3600E56E01 /* ChangeFilterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205ED1FF24772C3600E56E01 /* ChangeFilterAction.swift */; };
@@ -40,6 +40,7 @@
 		20C193F924731C02007AE477 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193F824731C02007AE477 /* AppStore.swift */; };
 		20C193FB24731C23007AE477 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193FA24731C23007AE477 /* AppEnvironment.swift */; };
 		20C193FE24731CC0007AE477 /* StartFetchTorrentsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193FD24731CC0007AE477 /* StartFetchTorrentsAction.swift */; };
+		20F4FD1C26E95CE000775F91 /* ShowAddLinkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F4FD1B26E95CE000775F91 /* ShowAddLinkAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		20C193F824731C02007AE477 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		20C193FA24731C23007AE477 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		20C193FD24731CC0007AE477 /* StartFetchTorrentsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFetchTorrentsAction.swift; sourceTree = "<group>"; };
+		20F4FD1B26E95CE000775F91 /* ShowAddLinkAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAddLinkAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				205ED20A2478CB7500E56E01 /* KeychainStored in Frameworks */,
-				202F7BA52480E383002485F7 /* SwiftyRedux in Frameworks */,
+				204CD62F254FCA5F00B9D5FE /* SwiftyRedux in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +141,6 @@
 		207F23462461227A000312AC /* App */ = {
 			isa = PBXGroup;
 			children = (
-				204EFF95247A2F7800E1615A /* States */,
 				20C193FA24731C23007AE477 /* AppEnvironment.swift */,
 				20C193F824731C02007AE477 /* AppStore.swift */,
 				20C193F524731B04007AE477 /* Actions */,
@@ -148,6 +149,7 @@
 				207F23622464FBD5000312AC /* Misc - Views - Styles */,
 				207F234A24612436000312AC /* Models */,
 				207F2366246500BB000312AC /* Network */,
+				204EFF95247A2F7800E1615A /* States */,
 				209B648924771A0700F74CCC /* Views */,
 			);
 			path = App;
@@ -246,6 +248,7 @@
 				200A7EF52478D4D8008F0E15 /* SignOutAction.swift */,
 				20C193FD24731CC0007AE477 /* StartFetchTorrentsAction.swift */,
 				205ED20124772FC700E56E01 /* TorrentQueueAction.swift */,
+				20F4FD1B26E95CE000775F91 /* ShowAddLinkAction.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -268,7 +271,7 @@
 			name = Deluge;
 			packageProductDependencies = (
 				205ED2092478CB7500E56E01 /* KeychainStored */,
-				202F7BA42480E383002485F7 /* SwiftyRedux */,
+				204CD62E254FCA5F00B9D5FE /* SwiftyRedux */,
 			);
 			productName = Deluge;
 			productReference = 207F232B2461220D000312AC /* Deluge.app */;
@@ -300,7 +303,7 @@
 			mainGroup = 207F23222461220D000312AC;
 			packageReferences = (
 				205ED2082478CB7500E56E01 /* XCRemoteSwiftPackageReference "KeychainStored" */,
-				202F7BA32480E383002485F7 /* XCRemoteSwiftPackageReference "swiftyredux" */,
+				204CD62D254FCA5F00B9D5FE /* XCRemoteSwiftPackageReference "swiftyredux" */,
 			);
 			productRefGroup = 207F232C2461220D000312AC /* Products */;
 			projectDirPath = "";
@@ -351,6 +354,7 @@
 				205ED20024772C3600E56E01 /* ChangeFilterAction.swift in Sources */,
 				207F23772465F2E9000312AC /* DelugeClient.swift in Sources */,
 				204EFF97247A2F8700E1615A /* ListState.swift in Sources */,
+				20F4FD1C26E95CE000775F91 /* ShowAddLinkAction.swift in Sources */,
 				20C193F724731B27007AE477 /* AppState.swift in Sources */,
 				20C193FE24731CC0007AE477 /* StartFetchTorrentsAction.swift in Sources */,
 				20C193FB24731C23007AE477 /* AppEnvironment.swift in Sources */,
@@ -425,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -480,7 +484,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -554,9 +558,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		202F7BA32480E383002485F7 /* XCRemoteSwiftPackageReference "swiftyredux" */ = {
+		204CD62D254FCA5F00B9D5FE /* XCRemoteSwiftPackageReference "swiftyredux" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://bitbucket.org/emilapps/swiftyredux";
+			repositoryURL = "git@bitbucket.org:emland89/swiftyredux.git";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -573,9 +577,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		202F7BA42480E383002485F7 /* SwiftyRedux */ = {
+		204CD62E254FCA5F00B9D5FE /* SwiftyRedux */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 202F7BA32480E383002485F7 /* XCRemoteSwiftPackageReference "swiftyredux" */;
+			package = 204CD62D254FCA5F00B9D5FE /* XCRemoteSwiftPackageReference "swiftyredux" */;
 			productName = SwiftyRedux;
 		};
 		205ED2092478CB7500E56E01 /* KeychainStored */ = {

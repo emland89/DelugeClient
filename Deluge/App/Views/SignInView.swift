@@ -12,8 +12,8 @@ struct SignInView: View {
     
     @EnvironmentObject var store: AppStore
 
-    @State var endpoint = ""
-    @State var password = ""
+    @State var endpoint = "https://deluge.orembo.com"
+    @State var password = "@Mira0329"
     
     var body: some View {
         

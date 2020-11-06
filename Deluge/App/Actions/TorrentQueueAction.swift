@@ -19,19 +19,16 @@ struct TorrentQueueAction: Action {
     let action: Action
     let torrents: [Torrent]
     
-    func reducer(environment: AppEnvironment) -> Reducer<AppState> {
-        
-        Reducer {
+    var reducer: AnyReducer<AppState, AppEnvironment> {
 
-            AsyncReducer(publisher: { state in
-                Just(state.session.signInState.session)
-                    .compactMap { $0 }
-                    .setFailureType(to: DelugeClient.Error.self)
-                    .flatMap { session in
-                        environment.delugeClient.actionPublisher(endpoint: session.endpoint, action: self.action.delugeAction, for: self.torrents)
+        AsyncReducer<AppState, AppEnvironment, Void, DelugeClient.Error> { state, environment in
+            Just(state.session.signInState.session)
+                .compactMap { $0 }
+                .setFailureType(to: DelugeClient.Error.self)
+                .flatMap { session in
+                    environment.delugeClient.actionPublisher(endpoint: session.endpoint, action: self.action.delugeAction, for: self.torrents)
                 }
                 .eraseToAnyPublisher()
-            })
         }
     }
 }

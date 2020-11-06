@@ -42,6 +42,11 @@ final class DelugeClient {
         let id = Int.random(in: 0...Int.max)
         let method: String
         let params: [P]
+        
+        init(method: String, params: P...) {
+            self.method = method
+            self.params = params
+        }
     }
     
     private struct EmptyResponseBody: Decodable { }
@@ -49,17 +54,20 @@ final class DelugeClient {
     // MARK: - Actions
     
     func authenticatePublisher(endpoint: URL, password: String) -> AnyPublisher<Bool, Error> {
-        let body = RequestBody(method: "auth.login", params: [password])
+        let body = RequestBody(method: "auth.login", params: password)
         return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: Bool.self)
     }
     
-    func addMagnetPublisher(url: URL) -> AnyPublisher<Void, Swift.Error> {
-        fatalError()
+    func addMagnetPublisher(endpoint: URL, link: URL) -> AnyPublisher<String, Error> {
+        
+        let body = RequestBody(method: "core.add_torrent_magnet", params: link, nil)
+        return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: String.self)
+            .eraseToAnyPublisher()
     }
     
     func fetchAllPublisher(endpoint: URL) -> AnyPublisher<[Torrent], Error> {
         let fields = ["queue", "name", "hash", "upload_payload_rate", "download_payload_rate", "progress", "state", "label", "eta"]
-        let body = RequestBody(method: "core.get_torrents_status", params: [[], fields])
+        let body = RequestBody(method: "core.get_torrents_status", params: [], fields)
         
         return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: [String: Torrent].self)
             .map { Array($0.values) }
@@ -69,7 +77,7 @@ final class DelugeClient {
     func actionPublisher(endpoint: URL, action: Action, for torrents: [Torrent]) -> AnyPublisher<Void, Error> {
         
         let hashes = torrents.map { $0.hash }
-        let body = RequestBody(method: action.rawValue, params: [hashes])
+        let body = RequestBody(method: action.rawValue, params: hashes)
         
         return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: EmptyResponseBody.self)
             .map { _ in }
@@ -108,7 +116,9 @@ final class DelugeClient {
                 throw Error.server(DelugeClient.ServerError(code: -1, message: "Response is empty"))
             }
             .mapError { error in
-                 error as! Error
+                print(error)
+                return error as! Error
+                
             }
             .eraseToAnyPublisher()
     }

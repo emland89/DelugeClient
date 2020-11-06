@@ -13,12 +13,10 @@ struct SelectTabAction: Action {
     
     let tab: Int
     
-    func reducer(environment: AppEnvironment) -> Reducer<AppState> {
-        
-        Reducer {
-            SyncReducer { state in
-                state.selectedTab = self.tab
-            }
+    var reducer: AnyReducer<AppState, AppEnvironment> {
+
+        SyncReducer<AppState, AppEnvironment> { state, _ in
+            state.selectedTab = self.tab
         }
     }
 }

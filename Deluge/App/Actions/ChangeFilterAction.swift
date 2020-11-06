@@ -13,11 +13,9 @@ struct ChangeFilterAction: Action {
     
     let filter: ListState.Filter
     
-    func reducer(environment: AppEnvironment) -> Reducer<AppState> {
-        Reducer {
-            SyncReducer { state in
-                state.list.selectedFilter = self.filter
-            }
+    var reducer: AnyReducer<AppState, AppEnvironment> {
+        SyncReducer<AppState, AppEnvironment> { state, _ in
+            state.list.selectedFilter = filter
         }
     }
 }

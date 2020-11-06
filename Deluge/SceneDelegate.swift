@@ -64,6 +64,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let link = URLContexts.first?.url else { return }
+                
+        let store = (UIApplication.shared.delegate as! AppDelegate).store
+        store.send(ShowAddLinkAction(link: link))
+    }
 
 
 }

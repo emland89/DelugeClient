@@ -10,15 +10,13 @@ import Foundation
 import SwiftyRedux
 
 struct SignOutAction: Action {
+    
+    var reducer: AnyReducer<AppState, AppEnvironment> {
         
-    func reducer(environment: AppEnvironment) -> Reducer<AppState> {
-        
-        Reducer {
-            SyncReducer { state in
-                state.selectedTab = 0
-                state.session.signInState = .signOut
-                state.list.fetchCancellable?.cancel()
-            }
+        SyncReducer<AppState, Environment> { state, _ in
+            state.selectedTab = 0
+            state.session.signInState = .signOut
+            state.list.fetchCancellable?.cancel()
         }
     }
 }

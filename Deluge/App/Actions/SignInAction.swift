@@ -14,24 +14,21 @@ struct SignInAction: Action {
     
     let session: Session
     
-    func reducer(environment: AppEnvironment) -> Reducer<AppState> {
+    var reducer: AnyReducer<AppState, AppEnvironment> {
+
+        SyncReducer<AppState, AppEnvironment> { state, _ in
+            state.session.signInState = .signingIn
+        }
         
-        Reducer {
-            SyncReducer<AppState> { state in
-                state.session.signInState = .signingIn
-            }
+        AsyncReducer<AppState, AppEnvironment, Bool, DelugeClient.Error> { _, environment in
+            environment.delugeClient.authenticatePublisher(endpoint: self.session.endpoint, password: self.session.password)
             
-            AsyncReducer<AppState, Bool, DelugeClient.Error>(publisher: { _ in
-                environment.delugeClient.authenticatePublisher(endpoint: self.session.endpoint, password: self.session.password)
-                
-            }, result: { state, isSignedIn in
-                state.session.signInState = isSignedIn ? .signedIn(self.session) : .signOut
-                
-            }, catch: { state, error in
-                state.session.isSignInErrorShown = true
-                print(error)
-                return nil
-            })
+        } result: { state, store, isSignedIn in
+            state.session.signInState = isSignedIn ? .signedIn(self.session) : .signOut
+            
+        } catch: { state, store, error in
+            state.session.isSignInErrorShown = true
+            print(error)
         }
     }
 }

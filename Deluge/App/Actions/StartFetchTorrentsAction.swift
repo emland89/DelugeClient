@@ -12,41 +12,41 @@ import SwiftyRedux
 
 struct StartFetchTorrentsAction: Action {
     
-    func reducer(environment: AppEnvironment) -> Reducer<AppState> {
-                
-        Reducer(components: {
+    var reducer: AnyReducer<AppState, AppEnvironment> {
+
+        AsyncReducer<AppState, AppEnvironment, [Torrent], DelugeClient.Error> { state, environment in
+            self.fetchPublisherFor(state: state, client: environment.delugeClient)
+        } subscription: { state, cancellable in
+            state.list.fetchCancellable?.cancel()
+            state.list.fetchCancellable = cancellable
             
-            AsyncReducer(publisher: { state in
-                self.fetchPublisherFor(state: state, client: environment.delugeClient)
-                
-            }, cancellation: { state, cancellable in
-                state.list.fetchCancellable?.cancel()
-                state.list.fetchCancellable = cancellable
-                
-            }, result: { state, torrents in
-                state.list.torrents = torrents
-                
-            }, catch: { state, error in
-                print(error)
-                guard let session = state.session.signInState.session else {
-                    state.session.signInState = .signOut
-                    return nil
-                }
-                
-                return SignInAction(session: session).reducer(environment: environment)
-            })
-        })
+        } result: { state, _, torrents in
+            state.list.torrents = torrents
+            
+        } catch: { state, store, error in
+            print(error)
+            
+            if let session = state.session.signInState.session {
+                store.send(SignInAction(session: session))
+            } else {
+                state.session.signInState = .signOut
+
+            }
+            
+        }
     }
     
     func fetchPublisherFor(state: AppState, client: DelugeClient) -> AnyPublisher<[Torrent], DelugeClient.Error> {
         
-        Timer.publish(every: 1, on: RunLoop.current, in: .default)
-        .autoconnect()
-        .compactMap { _ in state.session.signInState.session }
-        .setFailureType(to: DelugeClient.Error.self)
-        .flatMap { session in
-            client.fetchAllPublisher(endpoint: session.endpoint)
-        }
-        .eraseToAnyPublisher()
+        Timer.publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .compactMap { _ in state.session.signInState.session }
+            .setFailureType(to: DelugeClient.Error.self)
+            .flatMap { session in
+                client
+                    .fetchAllPublisher(endpoint: session.endpoint)
+                    .receive(on: DispatchQueue.main)
+            }
+            .eraseToAnyPublisher()
     }
 }

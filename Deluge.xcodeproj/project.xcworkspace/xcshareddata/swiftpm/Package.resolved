@@ -6,16 +6,16 @@
         "repositoryURL": "https://github.com/owowagency/KeychainStored",
         "state": {
           "branch": null,
-          "revision": "3f43efaa85d981f3819c9bca6a4f488d9cb534e9",
-          "version": "1.0.0"
+          "revision": "a5a1fccec6fe279fc244e37a7190c92ec15bf456",
+          "version": "1.1.0"
         }
       },
       {
         "package": "SwiftyRedux",
-        "repositoryURL": "https://bitbucket.org/emilapps/swiftyredux",
+        "repositoryURL": "git@bitbucket.org:emland89/swiftyredux.git",
         "state": {
           "branch": "master",
-          "revision": "7c9b09b34a1de0463d4fd257ee382fe85dfca700",
+          "revision": "fb63d1f903b6616bed1fd0b0c0280d1856ed796b",
           "version": null
         }
       }

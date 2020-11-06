@@ -10,3 +10,5 @@ import Foundation
 import SwiftyRedux
 
 typealias AppStore = Store<AppState, AppEnvironment>
+
+protocol AppView: ConnectedView where State == AppState, Environment == AppEnvironment { }
