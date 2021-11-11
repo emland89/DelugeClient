@@ -10,20 +10,13 @@ import SwiftUI
 
 struct MainView: View {
     
-    @EnvironmentObject var store: AppStore
-    
-    var selectedTab: Binding<Int> {
-        store.binding(for: \.selectedTab) { tab in
-            SelectTabAction(tab: tab)
-        }
-    }
+    @ObservedObject var viewModel: MainViewModel
     
     var body: some View {
         
-        TabView(selection: selectedTab) {
-            
+        TabView {
             NavigationView {
-                TorrentListView()
+                TorrentListView(viewModel: viewModel.listViewModel)
             }
             .tabItem {
                 Text("Torrents")
@@ -33,7 +26,7 @@ struct MainView: View {
             
             NavigationView {
                 Button("Signout") {
-                    self.store.send(SignOutAction())
+                   // self.store.send(SignOutAction())
                 }
             }
             .tabItem {
@@ -48,8 +41,6 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     
     static var previews: some View {
-        
-        MainView()
-            .environmentObject(store)
+        MainView(viewModel: .init(client: .init(endpoint: URL(string: "")!, password: "")))
     }
 }

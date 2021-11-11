@@ -10,66 +10,66 @@ import SwiftUI
 
 struct TorrentListView: View {
     
-    @EnvironmentObject var store: AppStore
-
-    var state: ListState {
-        store.state.list
+    @ObservedObject var viewModel: TorrentListViewModel
+    @State private var selectedFilter: TorrentState = .downloading
+    
+    private var filteredTorrents: [Torrent] {
+        viewModel.torrents
+            .filter { $0.state == selectedFilter }
+            .sorted { ($0.queue == -1 ? Int.max : $0.queue, $0.name) < ($1.queue == -1 ? Int.max : $1.queue, $1.name) }
     }
     
     var body: some View {
-        
         List {
-            Section(header: filter) {
-                ForEach(self.state.filteredTorrents) { torrent in
-                    TorrentListItemView(torrent: torrent)
-                        .padding(.vertical, 6)
-                        .contextMenu {
-                            Button("Resume", action: { self.setQueue(action: .resume, for: torrent) })
-                            Button("Pause", action: {  self.setQueue(action: .pause, for: torrent)})
-                            Divider()
-                            Button("Top", action: {  self.setQueue(action: .top, for: torrent) })
-                            Button("Up", action: {  self.setQueue(action: .up, for: torrent) })
-                            Button("Down", action: {  self.setQueue(action: .down, for: torrent) })
-                            Button("Bottom", action: { self.setQueue(action: .bottom, for: torrent) })
+            ForEach(filteredTorrents) { torrent in
+                TorrentListItemView(torrent: torrent)
+                    .padding(.vertical, 6)
+                    .contextMenu {
+                        Button("Resume", action: { self.perform(action: .resume, for: torrent) })
+                        Button("Pause", action: {  self.perform(action: .pause, for: torrent)})
+                        Divider()
+                        Button("Top", action: {  self.perform(action: .top, for: torrent) })
+                        Button("Up", action: {  self.perform(action: .up, for: torrent) })
+                        Button("Down", action: {  self.perform(action: .down, for: torrent) })
+                        Button("Bottom", action: { self.perform(action: .bottom, for: torrent) })
                     }
-                }
             }
         }
-        .onAppear(perform: {
-            self.store.send(StartFetchTorrentsAction())
-        })
+        .toolbar {
+            filter
+        }
         .navigationBarTitle("Torrents")
     }
     
     private var filter: some View {
         
-        Picker(selection: store.binding(for: \.list.selectedFilter, toAction: { filter in
-            ChangeFilterAction(filter: filter)
-        }), label: EmptyView()) {
-            
-            ForEach(state.filters) { filter -> Text in
-                
+        Picker("Filter", selection: $selectedFilter) {
+            ForEach(TorrentState.allCases) { filter in
                 switch filter {
                 case .downloading:
-                    return Text("Downloading")
+                    Text("Downloading")
                     
                 case .seeding:
-                    return Text("Seeding")
+                    Text("Seeding")
                     
                 case .queued:
-                    return Text("Queued")
+                    Text("Queued")
                     
                 case .paused:
-                    return Text("Paused")
+                    Text("Paused")
+                
+                case .error:
+                    Text("Error")
                 }
             }
         }
-        .pickerStyle(SegmentedPickerStyle())
         .padding(.vertical)
     }
     
-    private func setQueue(action: TorrentQueueAction.Action, for torrents: Torrent...) {
-        self.store.send(TorrentQueueAction(action: action, torrents: torrents))
+    private func perform(action: DelugeClient.Action, for torrents: Torrent...) {
+        Task {
+            await viewModel.perform(action: action, for: torrents)
+        }
     }
 }
 
@@ -78,8 +78,7 @@ struct TorrentsListView_Previews: PreviewProvider {
     static var previews: some View {
        
         return NavigationView {
-            TorrentListView()
-                .environmentObject(store)
+            TorrentListView(viewModel: .init(client: .init(endpoint: URL(string: "http://google.com")!, password: "")))
         }
     }
 }

@@ -7,17 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2004887D273CD364009D0A14 /* DelugeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004887C273CD364009D0A14 /* DelugeApp.swift */; };
+		20048880273CD6FC009D0A14 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004887F273CD6FC009D0A14 /* RootViewModel.swift */; };
+		20048882273CD75E009D0A14 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20048881273CD75E009D0A14 /* SignInViewModel.swift */; };
+		20048884273CD87C009D0A14 /* TorrentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20048883273CD87C009D0A14 /* TorrentListViewModel.swift */; };
 		200A7EF22478D145008F0E15 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A7EF12478D145008F0E15 /* MainView.swift */; };
-		200A7EF42478D2A6008F0E15 /* SelectTabAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A7EF32478D2A6008F0E15 /* SelectTabAction.swift */; };
-		200A7EF62478D4D8008F0E15 /* SignOutAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A7EF52478D4D8008F0E15 /* SignOutAction.swift */; };
 		204CD62F254FCA5F00B9D5FE /* SwiftyRedux in Frameworks */ = {isa = PBXBuildFile; productRef = 204CD62E254FCA5F00B9D5FE /* SwiftyRedux */; };
-		204EFF97247A2F8700E1615A /* ListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EFF96247A2F8700E1615A /* ListState.swift */; };
-		204EFF99247A31AB00E1615A /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EFF98247A31AB00E1615A /* SessionState.swift */; };
-		205ED20024772C3600E56E01 /* ChangeFilterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205ED1FF24772C3600E56E01 /* ChangeFilterAction.swift */; };
-		205ED20224772FC700E56E01 /* TorrentQueueAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205ED20124772FC700E56E01 /* TorrentQueueAction.swift */; };
 		205ED20A2478CB7500E56E01 /* KeychainStored in Frameworks */ = {isa = PBXBuildFile; productRef = 205ED2092478CB7500E56E01 /* KeychainStored */; };
-		207F232F2461220D000312AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F232E2461220D000312AC /* AppDelegate.swift */; };
-		207F23312461220D000312AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23302461220D000312AC /* SceneDelegate.swift */; };
 		207F23352461220F000312AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207F23342461220F000312AC /* Assets.xcassets */; };
 		207F23382461220F000312AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207F23372461220F000312AC /* Preview Assets.xcassets */; };
 		207F233B2461220F000312AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207F23392461220F000312AC /* LaunchScreen.storyboard */; };
@@ -30,30 +26,19 @@
 		207F235D2461D29C000312AC /* UploadDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F235C2461D29C000312AC /* UploadDownloadView.swift */; };
 		207F235F2461D331000312AC /* ETAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F235E2461D331000312AC /* ETAView.swift */; };
 		207F23612461D4A8000312AC /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23602461D4A8000312AC /* ProgressBar.swift */; };
-		207F23642464FBE5000312AC /* FilledButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23632464FBE5000312AC /* FilledButtonStyle.swift */; };
 		207F23752465E37B000312AC /* PercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23742465E37B000312AC /* PercentView.swift */; };
 		207F23772465F2E9000312AC /* DelugeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23762465F2E9000312AC /* DelugeClient.swift */; };
 		207F23792465FAD7000312AC /* TorrentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F23782465FAD7000312AC /* TorrentState.swift */; };
-		209B648C24771CD200F74CCC /* PreviewProvider+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209B648B24771CD200F74CCC /* PreviewProvider+Utilities.swift */; };
-		209B648E24771EF100F74CCC /* SignInAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209B648D24771EF100F74CCC /* SignInAction.swift */; };
-		20C193F724731B27007AE477 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193F624731B27007AE477 /* AppState.swift */; };
-		20C193F924731C02007AE477 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193F824731C02007AE477 /* AppStore.swift */; };
-		20C193FB24731C23007AE477 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193FA24731C23007AE477 /* AppEnvironment.swift */; };
-		20C193FE24731CC0007AE477 /* StartFetchTorrentsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C193FD24731CC0007AE477 /* StartFetchTorrentsAction.swift */; };
-		20F4FD1C26E95CE000775F91 /* ShowAddLinkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F4FD1B26E95CE000775F91 /* ShowAddLinkAction.swift */; };
+		2094F31E273CF1DF00B3CD33 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094F31D273CF1DF00B3CD33 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2004887C273CD364009D0A14 /* DelugeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelugeApp.swift; sourceTree = "<group>"; };
+		2004887F273CD6FC009D0A14 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		20048881273CD75E009D0A14 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		20048883273CD87C009D0A14 /* TorrentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentListViewModel.swift; sourceTree = "<group>"; };
 		200A7EF12478D145008F0E15 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		200A7EF32478D2A6008F0E15 /* SelectTabAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTabAction.swift; sourceTree = "<group>"; };
-		200A7EF52478D4D8008F0E15 /* SignOutAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutAction.swift; sourceTree = "<group>"; };
-		204EFF96247A2F8700E1615A /* ListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListState.swift; sourceTree = "<group>"; };
-		204EFF98247A31AB00E1615A /* SessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionState.swift; sourceTree = "<group>"; };
-		205ED1FF24772C3600E56E01 /* ChangeFilterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFilterAction.swift; sourceTree = "<group>"; };
-		205ED20124772FC700E56E01 /* TorrentQueueAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentQueueAction.swift; sourceTree = "<group>"; };
 		207F232B2461220D000312AC /* Deluge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deluge.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		207F232E2461220D000312AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		207F23302461220D000312AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		207F23342461220F000312AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		207F23372461220F000312AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		207F233A2461220F000312AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,17 +52,10 @@
 		207F235C2461D29C000312AC /* UploadDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDownloadView.swift; sourceTree = "<group>"; };
 		207F235E2461D331000312AC /* ETAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETAView.swift; sourceTree = "<group>"; };
 		207F23602461D4A8000312AC /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		207F23632464FBE5000312AC /* FilledButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButtonStyle.swift; sourceTree = "<group>"; };
 		207F23742465E37B000312AC /* PercentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentView.swift; sourceTree = "<group>"; };
 		207F23762465F2E9000312AC /* DelugeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelugeClient.swift; sourceTree = "<group>"; };
 		207F23782465FAD7000312AC /* TorrentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorrentState.swift; sourceTree = "<group>"; };
-		209B648B24771CD200F74CCC /* PreviewProvider+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewProvider+Utilities.swift"; sourceTree = "<group>"; };
-		209B648D24771EF100F74CCC /* SignInAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAction.swift; sourceTree = "<group>"; };
-		20C193F624731B27007AE477 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		20C193F824731C02007AE477 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
-		20C193FA24731C23007AE477 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		20C193FD24731CC0007AE477 /* StartFetchTorrentsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFetchTorrentsAction.swift; sourceTree = "<group>"; };
-		20F4FD1B26E95CE000775F91 /* ShowAddLinkAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAddLinkAction.swift; sourceTree = "<group>"; };
+		2094F31D273CF1DF00B3CD33 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,14 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		204EFF95247A2F7800E1615A /* States */ = {
+		2004887E273CD6E4009D0A14 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				20C193F624731B27007AE477 /* AppState.swift */,
-				204EFF96247A2F8700E1615A /* ListState.swift */,
-				204EFF98247A31AB00E1615A /* SessionState.swift */,
+				2004887F273CD6FC009D0A14 /* RootViewModel.swift */,
+				20048881273CD75E009D0A14 /* SignInViewModel.swift */,
+				20048883273CD87C009D0A14 /* TorrentListViewModel.swift */,
+				2094F31D273CF1DF00B3CD33 /* MainViewModel.swift */,
 			);
-			path = States;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		207F23222461220D000312AC = {
@@ -122,8 +101,7 @@
 		207F232D2461220D000312AC /* Deluge */ = {
 			isa = PBXGroup;
 			children = (
-				207F232E2461220D000312AC /* AppDelegate.swift */,
-				207F23302461220D000312AC /* SceneDelegate.swift */,
+				2004887C273CD364009D0A14 /* DelugeApp.swift */,
 				207F23462461227A000312AC /* App */,
 				209B648A24771BF300F74CCC /* Resources */,
 			);
@@ -141,15 +119,10 @@
 		207F23462461227A000312AC /* App */ = {
 			isa = PBXGroup;
 			children = (
-				20C193FA24731C23007AE477 /* AppEnvironment.swift */,
-				20C193F824731C02007AE477 /* AppStore.swift */,
-				20C193F524731B04007AE477 /* Actions */,
-				207F23652464FD66000312AC /* Misc - Utilities */,
 				209B6488247719D400F74CCC /* Misc - Views */,
-				207F23622464FBD5000312AC /* Misc - Views - Styles */,
 				207F234A24612436000312AC /* Models */,
 				207F2366246500BB000312AC /* Network */,
-				204EFF95247A2F7800E1615A /* States */,
+				2004887E273CD6E4009D0A14 /* ViewModels */,
 				209B648924771A0700F74CCC /* Views */,
 			);
 			path = App;
@@ -174,36 +147,12 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		207F23622464FBD5000312AC /* Misc - Views - Styles */ = {
-			isa = PBXGroup;
-			children = (
-				207F23632464FBE5000312AC /* FilledButtonStyle.swift */,
-			);
-			path = "Misc - Views - Styles";
-			sourceTree = "<group>";
-		};
-		207F23652464FD66000312AC /* Misc - Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				209B648B24771CD200F74CCC /* PreviewProvider+Utilities.swift */,
-			);
-			path = "Misc - Utilities";
-			sourceTree = "<group>";
-		};
 		207F2366246500BB000312AC /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				207F2371246512E6000312AC /* Others */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		207F2371246512E6000312AC /* Others */ = {
 			isa = PBXGroup;
 			children = (
 				207F23762465F2E9000312AC /* DelugeClient.swift */,
 			);
-			path = Others;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		209B6488247719D400F74CCC /* Misc - Views */ = {
@@ -237,20 +186,6 @@
 				207F23362461220F000312AC /* Preview Content */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		20C193F524731B04007AE477 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-				205ED1FF24772C3600E56E01 /* ChangeFilterAction.swift */,
-				200A7EF32478D2A6008F0E15 /* SelectTabAction.swift */,
-				209B648D24771EF100F74CCC /* SignInAction.swift */,
-				200A7EF52478D4D8008F0E15 /* SignOutAction.swift */,
-				20C193FD24731CC0007AE477 /* StartFetchTorrentsAction.swift */,
-				205ED20124772FC700E56E01 /* TorrentQueueAction.swift */,
-				20F4FD1B26E95CE000775F91 /* ShowAddLinkAction.swift */,
-			);
-			path = Actions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,33 +269,22 @@
 			files = (
 				207F23792465FAD7000312AC /* TorrentState.swift in Sources */,
 				207F23542461314E000312AC /* TorrentListItemView.swift in Sources */,
-				204EFF99247A31AB00E1615A /* SessionState.swift in Sources */,
-				205ED20224772FC700E56E01 /* TorrentQueueAction.swift in Sources */,
+				2004887D273CD364009D0A14 /* DelugeApp.swift in Sources */,
 				207F235224612AA1000312AC /* TorrentListView.swift in Sources */,
-				209B648E24771EF100F74CCC /* SignInAction.swift in Sources */,
-				207F232F2461220D000312AC /* AppDelegate.swift in Sources */,
 				207F234C24612449000312AC /* Torrent.swift in Sources */,
 				207F235B2461C58C000312AC /* Credentials.swift in Sources */,
 				207F234924612291000312AC /* RootView.swift in Sources */,
 				207F23752465E37B000312AC /* PercentView.swift in Sources */,
 				207F235D2461D29C000312AC /* UploadDownloadView.swift in Sources */,
-				200A7EF62478D4D8008F0E15 /* SignOutAction.swift in Sources */,
+				20048884273CD87C009D0A14 /* TorrentListViewModel.swift in Sources */,
 				207F235F2461D331000312AC /* ETAView.swift in Sources */,
+				20048882273CD75E009D0A14 /* SignInViewModel.swift in Sources */,
 				200A7EF22478D145008F0E15 /* MainView.swift in Sources */,
-				207F23312461220D000312AC /* SceneDelegate.swift in Sources */,
-				200A7EF42478D2A6008F0E15 /* SelectTabAction.swift in Sources */,
-				209B648C24771CD200F74CCC /* PreviewProvider+Utilities.swift in Sources */,
-				20C193F924731C02007AE477 /* AppStore.swift in Sources */,
-				205ED20024772C3600E56E01 /* ChangeFilterAction.swift in Sources */,
 				207F23772465F2E9000312AC /* DelugeClient.swift in Sources */,
-				204EFF97247A2F8700E1615A /* ListState.swift in Sources */,
-				20F4FD1C26E95CE000775F91 /* ShowAddLinkAction.swift in Sources */,
-				20C193F724731B27007AE477 /* AppState.swift in Sources */,
-				20C193FE24731CC0007AE477 /* StartFetchTorrentsAction.swift in Sources */,
-				20C193FB24731C23007AE477 /* AppEnvironment.swift in Sources */,
+				20048880273CD6FC009D0A14 /* RootViewModel.swift in Sources */,
 				207F23612461D4A8000312AC /* ProgressBar.swift in Sources */,
 				207F234324612229000312AC /* SignInView.swift in Sources */,
-				207F23642464FBE5000312AC /* FilledButtonStyle.swift in Sources */,
+				2094F31E273CF1DF00B3CD33 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +353,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -484,7 +408,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TorrentState: String, Codable {
+enum TorrentState: String, Codable, Identifiable, CaseIterable {
     
     var id: TorrentState { self }
     

@@ -10,25 +10,21 @@ import SwiftUI
 
 struct RootView: View {
     
-    @EnvironmentObject var store: AppStore
+    @StateObject var viewModel = RootViewModel()
 
     var body: some View {
         
-        var signInView: SignInView?
-        var mainView: MainView?
+        switch viewModel.attached {
+        case .signIn(let viewModel):
+            SignInView(viewModel: viewModel)
         
-        switch store.state.session.signInState {
-        case .signingIn, .signOut:
-            signInView = SignInView()
-
-        case .signedIn:
-            mainView = MainView()
+        case .main(let viewModel):
+            MainView(viewModel: viewModel)
+            
+        case .none:
+            Text("Loading")
         }
-        
-        return Group {
-            signInView
-            mainView
-        }
+  
     }
 }
 
@@ -36,6 +32,5 @@ struct RootView_Previews: PreviewProvider {
     
     static var previews: some View {
         RootView()
-            .environmentObject(store)
     }
 }

@@ -51,6 +51,15 @@ final class DelugeClient {
     
     private struct EmptyResponseBody: Decodable { }
     
+    
+    let endpoint: URL
+    let password: String
+    
+    init(endpoint: URL, password: String) {
+        self.endpoint = endpoint
+        self.password = password
+    }
+    
     // MARK: - Actions
     
     func authenticatePublisher(endpoint: URL, password: String) -> AnyPublisher<Bool, Error> {
@@ -121,5 +130,55 @@ final class DelugeClient {
                 
             }
             .eraseToAnyPublisher()
+    }
+    
+    // MARK - Async
+    
+    func authenticate() async throws {
+        let body = RequestBody(method: "auth.login", params: password)
+        let signedIn = try await send(body: body, responseType: Bool.self)
+    }
+    
+    func allTorrents() async throws -> [Torrent] {
+        
+        let fields = ["queue", "name", "hash", "upload_payload_rate", "download_payload_rate", "progress", "state", "label", "eta"]
+        let body = RequestBody(method: "core.get_torrents_status", params: [], fields)
+        
+        let values = try await send(body: body, responseType: [String: Torrent].self).values
+        return Array(values)
+    }
+    
+    func perform(action: Action, for torrents: [Torrent]) async throws {
+        
+        let hashes = torrents.map { $0.hash }
+        let body = RequestBody(method: action.rawValue, params: hashes)
+        
+        try await send(body: body, responseType: EmptyResponseBody.self)
+    }
+    
+    @discardableResult
+    private func send<D: Decodable, P: Encodable>(body: RequestBody<P>, responseType decodingType: D.Type) async throws -> D {
+       
+        var request = URLRequest(url: endpoint.appendingPathComponent("json"))
+        request.httpMethod = "POST"
+        request.httpBody = try! JSONEncoder().encode(body)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        // TODO: check response
+        let (data, _) = try await URLSession.shared.data(for: request, delegate: nil) // as! (Data, HTTPURLResponse)
+        
+        let responseBody = try decoder.decode(Response<D>.self, from: data)
+        
+        if let result = responseBody.result {
+            return result
+        }
+        else if let error = responseBody.error {
+            throw Error.server(error)
+        }
+        
+        throw Error.server(DelugeClient.ServerError(code: -1, message: "Response is empty"))
     }
 }
