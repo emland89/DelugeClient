@@ -12,8 +12,16 @@ import Foundation
 final class MainViewModel: ObservableObject {
     
     let listViewModel: TorrentListViewModel
+    private let client: DelugeClient
 
     init(client: DelugeClient) {
+        self.client = client
         listViewModel = .init(client: client)
+    }
+    
+    func addMagnet(link: URL) {
+        Task {
+            try await client.addMagnet(link: link)
+        }
     }
 }

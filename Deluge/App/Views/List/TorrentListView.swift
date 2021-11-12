@@ -25,14 +25,17 @@ struct TorrentListView: View {
                 TorrentListItemView(torrent: torrent)
                     .padding(.vertical, 6)
                     .contextMenu {
-                        Button("Resume", action: { self.perform(action: .resume, for: torrent) })
-                        Button("Pause", action: {  self.perform(action: .pause, for: torrent)})
+                        Button("Resume", action: { self.viewModel.perform(action: .resume, for: torrent) })
+                        Button("Pause", action: { self.viewModel.perform(action: .pause, for: torrent)})
                         Divider()
-                        Button("Top", action: {  self.perform(action: .top, for: torrent) })
-                        Button("Up", action: {  self.perform(action: .up, for: torrent) })
-                        Button("Down", action: {  self.perform(action: .down, for: torrent) })
-                        Button("Bottom", action: { self.perform(action: .bottom, for: torrent) })
+                        Button("Top", action: { self.viewModel.perform(action: .top, for: torrent) })
+                        Button("Up", action: { self.viewModel.perform(action: .up, for: torrent) })
+                        Button("Down", action: { self.viewModel.perform(action: .down, for: torrent) })
+                        Button("Bottom", action: { self.viewModel.perform(action: .bottom, for: torrent) })
                     }
+            }
+            .onDelete { indexSet in
+                viewModel.remove(torrents: indexSet.map { filteredTorrents[$0] })
             }
         }
         .toolbar {
@@ -64,12 +67,6 @@ struct TorrentListView: View {
             }
         }
         .padding(.vertical)
-    }
-    
-    private func perform(action: DelugeClient.Action, for torrents: Torrent...) {
-        Task {
-            await viewModel.perform(action: action, for: torrents)
-        }
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  Delugeclient.swift
+//  DelugeService.swift
 //  Deluge
 //
 //  Created by Emil Landron on 5/8/20.
@@ -7,17 +7,10 @@
 //
 
 import Foundation
-import Combine
 
 final class DelugeClient {
     
     // MARK: - Types
-    
-    enum Error: Swift.Error {
-        case server(ServerError)
-        case parsing(Swift.Error)
-        case network(Swift.Error)
-    }
     
     struct ServerError: Swift.Error, Decodable {
         let code: Int
@@ -51,109 +44,70 @@ final class DelugeClient {
     
     private struct EmptyResponseBody: Decodable { }
     
+    private let endpoint: URL
+    private let password: String
+    private var task: Task<Void, Error>?
+
+    private var isConnected: Bool {
+        get async throws {
+            let body = RequestBody(method: "web.connected", params: [String]())
+            return try await send(body: body, responseType: Bool.self)
+        }
+    }
     
-    let endpoint: URL
-    let password: String
+    var torrents: AsyncThrowingStream<[Torrent], Error> {
+        
+        AsyncThrowingStream<[Torrent], Error> { [self] in
+            await Task.sleep(1_000_000_000)
+            
+            let fields = ["queue", "name", "hash", "upload_payload_rate", "download_payload_rate", "progress", "state", "label", "eta"]
+            let body = RequestBody(method: "core.get_torrents_status", params: [], fields)
+            
+            let values = try await send(body: body, responseType: [String: Torrent].self).values
+            return Array(values)
+        }
+    }
     
     init(endpoint: URL, password: String) {
         self.endpoint = endpoint
         self.password = password
     }
     
-    // MARK: - Actions
+    // MARK - Methods
     
-    func authenticatePublisher(endpoint: URL, password: String) -> AnyPublisher<Bool, Error> {
+    /// Host id
+    func login() async throws {
         let body = RequestBody(method: "auth.login", params: password)
-        return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: Bool.self)
+        try await send(body: body, responseType: Bool.self)
+        
+        keepAlive()
     }
     
-    func addMagnetPublisher(endpoint: URL, link: URL) -> AnyPublisher<String, Error> {
+    /// Adds a magnet link
+    /// - Parameter link: The torrent link to add
+    /// - Returns: The added torrent id
+    func addMagnet(link: URL) async throws -> String {
         
         let body = RequestBody(method: "core.add_torrent_magnet", params: link, nil)
-        return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: String.self)
-            .eraseToAnyPublisher()
+        return try await send(body: body, responseType: String.self)
     }
     
-    func fetchAllPublisher(endpoint: URL) -> AnyPublisher<[Torrent], Error> {
-        let fields = ["queue", "name", "hash", "upload_payload_rate", "download_payload_rate", "progress", "state", "label", "eta"]
-        let body = RequestBody(method: "core.get_torrents_status", params: [], fields)
-        
-        return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: [String: Torrent].self)
-            .map { Array($0.values) }
-            .eraseToAnyPublisher()
-    }
-    
-    func actionPublisher(endpoint: URL, action: Action, for torrents: [Torrent]) -> AnyPublisher<Void, Error> {
-        
-        let hashes = torrents.map { $0.hash }
-        let body = RequestBody(method: action.rawValue, params: hashes)
-        
-        return dataTaskPublisher(endpoint: endpoint, body: body, decodingType: EmptyResponseBody.self)
-            .map { _ in }
-            .eraseToAnyPublisher()
-    }
-    
-    // MARK: - Helpers
-    
-    private func dataTaskPublisher<D: Decodable, P: Encodable>(endpoint: URL, body: RequestBody<P>, decodingType: D.Type) -> AnyPublisher<D, Error> {
-        
-        var request = URLRequest(url: endpoint.appendingPathComponent("json"))
-        request.httpMethod = "POST"
-        request.httpBody = try! JSONEncoder().encode(body)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        
-        return URLSession.shared
-            .dataTaskPublisher(for: request)
-            .mapError { error in
-                Error.network(error)
-            }
-            .map { $0.data }
-            .decode(type: Response<D>.self, decoder: decoder)
-            .mapError { error in
-                Error.parsing(error)
-            }
-            .tryMap { response in
-                if let result = response.result {
-                    return result
-                }
-                else if let error = response.error {
-                    throw Error.server(error)
-                }
-                throw Error.server(DelugeClient.ServerError(code: -1, message: "Response is empty"))
-            }
-            .mapError { error in
-                print(error)
-                return error as! Error
-                
-            }
-            .eraseToAnyPublisher()
-    }
-    
-    // MARK - Async
-    
-    func authenticate() async throws {
-        let body = RequestBody(method: "auth.login", params: password)
-        let signedIn = try await send(body: body, responseType: Bool.self)
-    }
-    
-    func allTorrents() async throws -> [Torrent] {
-        
-        let fields = ["queue", "name", "hash", "upload_payload_rate", "download_payload_rate", "progress", "state", "label", "eta"]
-        let body = RequestBody(method: "core.get_torrents_status", params: [], fields)
-        
-        let values = try await send(body: body, responseType: [String: Torrent].self).values
-        return Array(values)
-    }
+//    func prefetchMagnetMetadata(link: URL) async throws -> [String: String] {
+//        let body = RequestBody(method: "core.prefetch_magnet_metadata", params: link, nil)
+//        return try await send(body: body, responseType: [String: String].self)
+//    }
     
     func perform(action: Action, for torrents: [Torrent]) async throws {
-        
         let hashes = torrents.map { $0.hash }
         let body = RequestBody(method: action.rawValue, params: hashes)
         
         try await send(body: body, responseType: EmptyResponseBody.self)
+    }
+    
+    func remove(torrent: Torrent) async throws {
+        let body = RequestBody(method: "core.remove_torrent", params: torrent.id, "TRUE")
+        let success = try await send(body: body, responseType: Bool.self)
+        print(#function, success)
     }
     
     @discardableResult
@@ -176,9 +130,26 @@ final class DelugeClient {
             return result
         }
         else if let error = responseBody.error {
-            throw Error.server(error)
+            throw error
         }
         
-        throw Error.server(DelugeClient.ServerError(code: -1, message: "Response is empty"))
+        throw ServerError(code: -1, message: "Response is empty")
+    }
+    
+    private func keepAlive() {
+
+        task = Task<Void, Error>.detached(priority: .background) { [self] in
+            
+            try Task.checkCancellation()
+
+            if try await isConnected {
+                await Task.sleep(1_000_000_000)
+                keepAlive()
+            }
+            else {
+                try await login() // TODO: Sign Out
+                keepAlive()
+            }
+        }
     }
 }

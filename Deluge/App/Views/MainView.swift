@@ -35,6 +35,9 @@ struct MainView: View {
             }
             .tag(1)
         }
+        .onOpenURL { link in
+            viewModel.addMagnet(link: link)
+        }
     }
 }
 

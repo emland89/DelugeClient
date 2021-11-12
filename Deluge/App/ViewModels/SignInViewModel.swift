@@ -22,22 +22,24 @@ final class SignInViewModel: ObservableObject {
         !endpoint.isEmpty && !password.isEmpty
     }
     
-    func signIn() async {
+    func signIn() {
         guard let endpoint = URL(string: endpoint) else { return }
         
-        isSigningIn = true
-        
-        let client = DelugeClient(endpoint: endpoint, password: password)
-        
-        do {
-            try await client.authenticate()
-            clientContinuation?.resume(returning: client)
+        Task {
+            isSigningIn = true
+            
+            let client = DelugeClient(endpoint: endpoint, password: password)
+            
+            do {
+                try await client.login()
+                clientContinuation?.resume(returning: client)
+            }
+            catch {
+                isSignInErrorAlertPresented = true
+            }
+            
+            isSigningIn = false
         }
-        catch {
-            isSignInErrorAlertPresented = true
-        }
-        
-        isSigningIn = false
     }
     
     func client() async -> DelugeClient {

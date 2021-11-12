@@ -33,9 +33,7 @@ struct SignInView: View {
                 Spacer()
                
                 Button("Sign In") {
-                    Task {
-                        await viewModel.signIn()
-                    }
+                    viewModel.signIn()
                 }
                 .buttonStyle(.borderedProminent)
                 
