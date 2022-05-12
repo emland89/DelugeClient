@@ -1,25 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "KeychainStored",
-        "repositoryURL": "https://github.com/owowagency/KeychainStored",
-        "state": {
-          "branch": null,
-          "revision": "a5a1fccec6fe279fc244e37a7190c92ec15bf456",
-          "version": "1.1.0"
-        }
-      },
-      {
-        "package": "SwiftyRedux",
-        "repositoryURL": "git@bitbucket.org:emland89/swiftyredux.git",
-        "state": {
-          "branch": "master",
-          "revision": "fb63d1f903b6616bed1fd0b0c0280d1856ed796b",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "keychainstored",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/owowagency/KeychainStored",
+      "state" : {
+        "revision" : "a5a1fccec6fe279fc244e37a7190c92ec15bf456",
+        "version" : "1.1.0"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }

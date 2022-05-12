@@ -58,7 +58,7 @@ final class DelugeClient {
     var torrents: AsyncThrowingStream<[Torrent], Error> {
         
         AsyncThrowingStream<[Torrent], Error> { [self] in
-            await Task.sleep(1_000_000_000)
+            try await Task.sleep(nanoseconds: 1_000_000_000)
             
             let fields = ["queue", "name", "hash", "upload_payload_rate", "download_payload_rate", "progress", "state", "label", "eta"]
             let body = RequestBody(method: "core.get_torrents_status", params: [], fields)
@@ -71,6 +71,10 @@ final class DelugeClient {
     init(endpoint: URL, password: String) {
         self.endpoint = endpoint
         self.password = password
+    }
+    
+    deinit {
+        task?.cancel()
     }
     
     // MARK - Methods
@@ -132,18 +136,19 @@ final class DelugeClient {
         else if let error = responseBody.error {
             throw error
         }
-        
-        throw ServerError(code: -1, message: "Response is empty")
+        else {
+            throw ServerError(code: -1, message: "Response is empty")
+        }
     }
     
     private func keepAlive() {
 
-        task = Task<Void, Error>.detached(priority: .background) { [self] in
+        task = Task<Void, Error>(priority: .background) { [self] in
             
             try Task.checkCancellation()
 
             if try await isConnected {
-                await Task.sleep(1_000_000_000)
+                try await Task.sleep(nanoseconds: 1_000_000_000)
                 keepAlive()
             }
             else {

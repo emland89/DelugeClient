@@ -18,6 +18,5 @@ struct DelugeApp: App {
         WindowGroup {
             RootView()
         }
-        
     }
 }

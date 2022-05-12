@@ -25,9 +25,12 @@ struct TorrentListView: View {
                 TorrentListItemView(torrent: torrent)
                     .padding(.vertical, 6)
                     .contextMenu {
+                        
                         Button("Resume", action: { self.viewModel.perform(action: .resume, for: torrent) })
                         Button("Pause", action: { self.viewModel.perform(action: .pause, for: torrent)})
+                        
                         Divider()
+                       
                         Button("Top", action: { self.viewModel.perform(action: .top, for: torrent) })
                         Button("Up", action: { self.viewModel.perform(action: .up, for: torrent) })
                         Button("Down", action: { self.viewModel.perform(action: .down, for: torrent) })
@@ -41,7 +44,9 @@ struct TorrentListView: View {
         .toolbar {
             filter
         }
+        #if os(iOS)
         .navigationBarTitle("Torrents")
+        #endif
     }
     
     private var filter: some View {
