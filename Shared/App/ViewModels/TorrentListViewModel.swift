@@ -8,10 +8,10 @@
 
 import Foundation
 
-@MainActor
-final class TorrentListViewModel: ObservableObject {
+@Observable
+final class TorrentListViewModel {
 
-    @Published private(set) var torrents: [Torrent] = []
+    private(set) var torrents: [Torrent] = []
     
     private let client: DelugeClient
     private var task: Task<Void, Error>?
@@ -36,6 +36,7 @@ final class TorrentListViewModel: ObservableObject {
                 try await client.perform(action: action, for: torrents)
             }
             catch {
+                // TODO: Show Error Alert
                 print(error)
             }
         }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RootView: View {
     
-    @StateObject var viewModel = RootViewModel()
+    var viewModel = RootViewModel()
 
     var body: some View {
         
@@ -22,15 +22,12 @@ struct RootView: View {
             MainView(viewModel: viewModel)
             
         case .none:
-            Text("Loading")
+            ProgressView("Loading...")
         }
   
     }
 }
 
-struct RootView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        RootView()
-    }
+#Preview {
+    RootView()
 }

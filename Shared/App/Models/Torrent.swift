@@ -10,11 +10,22 @@ import Foundation
 
 struct Torrent: Decodable, Identifiable, Hashable {
     
-    var id: String { hash }
+    private enum CodingKeys: String, CodingKey {
+        case id = "hash"
+        case eta
+        case queue
+        case state
+        case progress
+        case name
+        case uploadPayloadRate
+        case downloadPayloadRate
+        case label
+    }
+
+    let id: String
     let eta: TimeInterval
     let queue: Int
     let state: TorrentState
-    let hash: String
     let progress: Double
     let name: String
     let uploadPayloadRate: Int

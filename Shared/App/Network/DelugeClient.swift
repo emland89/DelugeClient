@@ -8,6 +8,8 @@
 
 import Foundation
 
+// TODO: Turn Into Protocol for testing
+
 final class DelugeClient {
     
     // MARK: - Types
@@ -102,7 +104,7 @@ final class DelugeClient {
 //    }
     
     func perform(action: Action, for torrents: [Torrent]) async throws {
-        let hashes = torrents.map { $0.hash }
+        let hashes = torrents.map { $0.id }
         let body = RequestBody(method: action.rawValue, params: hashes)
         
         try await send(body: body, responseType: EmptyResponseBody.self)

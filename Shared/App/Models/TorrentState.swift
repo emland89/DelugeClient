@@ -8,10 +8,8 @@
 
 import Foundation
 
-enum TorrentState: String, Codable, Identifiable, CaseIterable {
-    
-    var id: TorrentState { self }
-    
+enum TorrentState: String, Codable, CaseIterable {
+        
     case downloading = "Downloading"
     case queued = "Queued"
     case seeding = "Seeding"

@@ -10,8 +10,8 @@ import SwiftUI
 
 struct ETAView: View {
     
-    @Binding var eta: TimeInterval
-    
+    let eta: TimeInterval
+
     private static let etaFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .short
@@ -24,9 +24,6 @@ struct ETAView: View {
     }
 }
 
-struct ETAView_Previews: PreviewProvider {
-    static var previews: some View {
-        ETAView(eta: .constant(60))
-            .previewLayout(.sizeThatFits)
-    }
+#Preview {
+    ETAView(eta: 60)
 }

@@ -8,25 +8,23 @@
 
 import Foundation
 
-@MainActor
-final class RootViewModel: ObservableObject {
+@Observable
+final class RootViewModel {
     
     enum Attached {
         case signIn(SignInViewModel)
         case main(MainViewModel)
     }
     
-    @Published private(set) var attached: Attached?
-    
+    private(set) var attached: Attached?
+
     init() {
-        // TODO: Check password and user
-        
-        Task {
-            let viewModel = SignInViewModel()
-            attached = .signIn(viewModel)
-            
-            let client = await viewModel.client()
-            attached = .main(.init(client: client))
+        // TODO: Check password and user on keychain
+
+        let viewModel = SignInViewModel { [weak self] client in
+            self?.attached = .main(.init(client: client))
         }
+
+        attached = .signIn(viewModel)
     }
 }

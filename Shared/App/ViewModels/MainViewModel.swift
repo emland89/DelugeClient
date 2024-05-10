@@ -8,8 +8,8 @@
 
 import Foundation
 
-@MainActor
-final class MainViewModel: ObservableObject {
+@Observable
+final class MainViewModel {
     
     let listViewModel: TorrentListViewModel
     private let client: DelugeClient

@@ -8,23 +8,29 @@
 
 import Foundation
 
-@MainActor
-final class SignInViewModel: ObservableObject {
+@Observable
+final class SignInViewModel {
     
-    @Published var endpoint = "https://deluge.orembo.com"
-    @Published var password = "@Mira0329"
-    @Published var isSignInErrorAlertPresented = false
-    @Published private(set) var isSigningIn = false
+    var endpoint = "https://deluge.orembo.com"
+    var password = "@Mira0329"
+    var isSignInErrorAlertPresented = false
+    private(set) var isSigningIn = false
 
-    private var clientContinuation: CheckedContinuation<DelugeClient, Never>?
-    
-    var isSignInEnabled: Bool {
-        !endpoint.isEmpty && !password.isEmpty
+    var isSignInActionEnabled: Bool {
+        !endpoint.isEmpty && !password.isEmpty && !isSigningIn
     }
     
+    private let onSignedIn: (DelugeClient) -> Void
+
+
+    init(onSignedIn: @escaping (DelugeClient) -> Void) {
+        self.onSignedIn = onSignedIn
+    }
+
     func signIn() {
-        guard let endpoint = URL(string: endpoint) else { return }
-        
+        // TODO: Show error if bad URL
+        guard !isSigningIn, let endpoint = URL(string: endpoint) else { return }
+
         Task {
             isSigningIn = true
             
@@ -32,19 +38,13 @@ final class SignInViewModel: ObservableObject {
             
             do {
                 try await client.login()
-                clientContinuation?.resume(returning: client)
+                onSignedIn(client)
             }
             catch {
                 isSignInErrorAlertPresented = true
             }
             
             isSigningIn = false
-        }
-    }
-    
-    func client() async -> DelugeClient {
-        await withCheckedContinuation { (continuation: CheckedContinuation<DelugeClient, Never>) in
-            clientContinuation = continuation
         }
     }
 }

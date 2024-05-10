@@ -8,51 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		205B137B282DB9B700B1ACD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 205B1369282DB9B700B1ACD3 /* Assets.xcassets */; };
-		205B137C282DB9B700B1ACD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 205B1369282DB9B700B1ACD3 /* Assets.xcassets */; };
-		205B13E3282DBB6C00B1ACD3 /* PercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13CB282DBB6C00B1ACD3 /* PercentView.swift */; };
-		205B13E4282DBB6C00B1ACD3 /* PercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13CB282DBB6C00B1ACD3 /* PercentView.swift */; };
 		205B13E5282DBB6C00B1ACD3 /* ETAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13CC282DBB6C00B1ACD3 /* ETAView.swift */; };
-		205B13E6282DBB6C00B1ACD3 /* ETAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13CC282DBB6C00B1ACD3 /* ETAView.swift */; };
-		205B13E7282DBB6C00B1ACD3 /* UploadDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13CD282DBB6C00B1ACD3 /* UploadDownloadView.swift */; };
-		205B13E8282DBB6C00B1ACD3 /* UploadDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13CD282DBB6C00B1ACD3 /* UploadDownloadView.swift */; };
+		205B13E7282DBB6C00B1ACD3 /* TransferRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13CD282DBB6C00B1ACD3 /* TransferRateView.swift */; };
 		205B13E9282DBB6C00B1ACD3 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13CF282DBB6C00B1ACD3 /* RootViewModel.swift */; };
-		205B13EA282DBB6C00B1ACD3 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13CF282DBB6C00B1ACD3 /* RootViewModel.swift */; };
 		205B13EB282DBB6C00B1ACD3 /* TorrentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D0282DBB6C00B1ACD3 /* TorrentListViewModel.swift */; };
-		205B13EC282DBB6C00B1ACD3 /* TorrentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D0282DBB6C00B1ACD3 /* TorrentListViewModel.swift */; };
 		205B13ED282DBB6C00B1ACD3 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D1282DBB6C00B1ACD3 /* MainViewModel.swift */; };
-		205B13EE282DBB6C00B1ACD3 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D1282DBB6C00B1ACD3 /* MainViewModel.swift */; };
 		205B13EF282DBB6C00B1ACD3 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D2282DBB6C00B1ACD3 /* SignInViewModel.swift */; };
-		205B13F0282DBB6C00B1ACD3 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D2282DBB6C00B1ACD3 /* SignInViewModel.swift */; };
 		205B13F1282DBB6C00B1ACD3 /* DelugeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D4282DBB6C00B1ACD3 /* DelugeClient.swift */; };
-		205B13F2282DBB6C00B1ACD3 /* DelugeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D4282DBB6C00B1ACD3 /* DelugeClient.swift */; };
 		205B13F3282DBB6C00B1ACD3 /* TorrentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D6282DBB6C00B1ACD3 /* TorrentState.swift */; };
-		205B13F4282DBB6C00B1ACD3 /* TorrentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D6282DBB6C00B1ACD3 /* TorrentState.swift */; };
 		205B13F7282DBB6C00B1ACD3 /* Torrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D8282DBB6C00B1ACD3 /* Torrent.swift */; };
-		205B13F8282DBB6C00B1ACD3 /* Torrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D8282DBB6C00B1ACD3 /* Torrent.swift */; };
-		205B13F9282DBB6C00B1ACD3 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D9282DBB6C00B1ACD3 /* Credentials.swift */; };
-		205B13FA282DBB6C00B1ACD3 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13D9282DBB6C00B1ACD3 /* Credentials.swift */; };
 		205B13FB282DBB6C00B1ACD3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13DB282DBB6C00B1ACD3 /* RootView.swift */; };
-		205B13FC282DBB6C00B1ACD3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13DB282DBB6C00B1ACD3 /* RootView.swift */; };
 		205B13FD282DBB6C00B1ACD3 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13DC282DBB6C00B1ACD3 /* SignInView.swift */; };
-		205B13FE282DBB6C00B1ACD3 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13DC282DBB6C00B1ACD3 /* SignInView.swift */; };
 		205B13FF282DBB6C00B1ACD3 /* TorrentListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13DE282DBB6C00B1ACD3 /* TorrentListItemView.swift */; };
-		205B1400282DBB6C00B1ACD3 /* TorrentListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13DE282DBB6C00B1ACD3 /* TorrentListItemView.swift */; };
 		205B1403282DBB6C00B1ACD3 /* TorrentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13E0282DBB6C00B1ACD3 /* TorrentListView.swift */; };
-		205B1404282DBB6C00B1ACD3 /* TorrentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13E0282DBB6C00B1ACD3 /* TorrentListView.swift */; };
 		205B1405282DBB6C00B1ACD3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13E1282DBB6C00B1ACD3 /* MainView.swift */; };
-		205B1406282DBB6C00B1ACD3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13E1282DBB6C00B1ACD3 /* MainView.swift */; };
 		205B1407282DBB6C00B1ACD3 /* DelugeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13E2282DBB6C00B1ACD3 /* DelugeApp.swift */; };
-		205B1408282DBB6C00B1ACD3 /* DelugeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B13E2282DBB6C00B1ACD3 /* DelugeApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		205B1369282DB9B700B1ACD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		205B136E282DB9B700B1ACD3 /* Deluge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deluge.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		205B1374282DB9B700B1ACD3 /* Deluge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deluge.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		205B1376282DB9B700B1ACD3 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		205B13CB282DBB6C00B1ACD3 /* PercentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentView.swift; sourceTree = "<group>"; };
 		205B13CC282DBB6C00B1ACD3 /* ETAView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETAView.swift; sourceTree = "<group>"; };
-		205B13CD282DBB6C00B1ACD3 /* UploadDownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadDownloadView.swift; sourceTree = "<group>"; };
+		205B13CD282DBB6C00B1ACD3 /* TransferRateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferRateView.swift; sourceTree = "<group>"; };
 		205B13CF282DBB6C00B1ACD3 /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		205B13D0282DBB6C00B1ACD3 /* TorrentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentListViewModel.swift; sourceTree = "<group>"; };
 		205B13D1282DBB6C00B1ACD3 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -60,7 +37,6 @@
 		205B13D4282DBB6C00B1ACD3 /* DelugeClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelugeClient.swift; sourceTree = "<group>"; };
 		205B13D6282DBB6C00B1ACD3 /* TorrentState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentState.swift; sourceTree = "<group>"; };
 		205B13D8282DBB6C00B1ACD3 /* Torrent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Torrent.swift; sourceTree = "<group>"; };
-		205B13D9282DBB6C00B1ACD3 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		205B13DB282DBB6C00B1ACD3 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		205B13DC282DBB6C00B1ACD3 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		205B13DE282DBB6C00B1ACD3 /* TorrentListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorrentListItemView.swift; sourceTree = "<group>"; };
@@ -77,13 +53,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		205B1371282DB9B700B1ACD3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -91,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				205B1366282DB9B600B1ACD3 /* Shared */,
-				205B1375282DB9B700B1ACD3 /* macOS */,
 				205B136F282DB9B700B1ACD3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -110,39 +78,28 @@
 			isa = PBXGroup;
 			children = (
 				205B136E282DB9B700B1ACD3 /* Deluge.app */,
-				205B1374282DB9B700B1ACD3 /* Deluge.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		205B1375282DB9B700B1ACD3 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				205B1376282DB9B700B1ACD3 /* macOS.entitlements */,
-			);
-			path = macOS;
 			sourceTree = "<group>";
 		};
 		205B13C9282DBB6C00B1ACD3 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				205B13CA282DBB6C00B1ACD3 /* Misc - Views */,
-				205B13CE282DBB6C00B1ACD3 /* ViewModels */,
-				205B13D3282DBB6C00B1ACD3 /* Network */,
 				205B13D5282DBB6C00B1ACD3 /* Models */,
+				205B13D3282DBB6C00B1ACD3 /* Network */,
+				205B13CE282DBB6C00B1ACD3 /* ViewModels */,
 				205B13DA282DBB6C00B1ACD3 /* Views */,
 			);
 			path = App;
 			sourceTree = "<group>";
 		};
-		205B13CA282DBB6C00B1ACD3 /* Misc - Views */ = {
+		205B13CA282DBB6C00B1ACD3 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				205B13CB282DBB6C00B1ACD3 /* PercentView.swift */,
 				205B13CC282DBB6C00B1ACD3 /* ETAView.swift */,
-				205B13CD282DBB6C00B1ACD3 /* UploadDownloadView.swift */,
+				205B13CD282DBB6C00B1ACD3 /* TransferRateView.swift */,
 			);
-			path = "Misc - Views";
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		205B13CE282DBB6C00B1ACD3 /* ViewModels */ = {
@@ -169,7 +126,6 @@
 			children = (
 				205B13D6282DBB6C00B1ACD3 /* TorrentState.swift */,
 				205B13D8282DBB6C00B1ACD3 /* Torrent.swift */,
-				205B13D9282DBB6C00B1ACD3 /* Credentials.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,10 +133,11 @@
 		205B13DA282DBB6C00B1ACD3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				205B13E1282DBB6C00B1ACD3 /* MainView.swift */,
 				205B13DB282DBB6C00B1ACD3 /* RootView.swift */,
 				205B13DC282DBB6C00B1ACD3 /* SignInView.swift */,
 				205B13DD282DBB6C00B1ACD3 /* List */,
-				205B13E1282DBB6C00B1ACD3 /* MainView.swift */,
+				205B13CA282DBB6C00B1ACD3 /* Misc */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,23 +171,6 @@
 			productReference = 205B136E282DB9B700B1ACD3 /* Deluge.app */;
 			productType = "com.apple.product-type.application";
 		};
-		205B1373282DB9B700B1ACD3 /* Deluge (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 205B1382282DB9B700B1ACD3 /* Build configuration list for PBXNativeTarget "Deluge (macOS)" */;
-			buildPhases = (
-				205B1370282DB9B700B1ACD3 /* Sources */,
-				205B1371282DB9B700B1ACD3 /* Frameworks */,
-				205B1372282DB9B700B1ACD3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Deluge (macOS)";
-			productName = "Deluge (macOS)";
-			productReference = 205B1374282DB9B700B1ACD3 /* Deluge.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -239,13 +179,9 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					205B136D282DB9B700B1ACD3 = {
-						CreatedOnToolsVersion = 13.3.1;
-						LastSwiftMigration = 1330;
-					};
-					205B1373282DB9B700B1ACD3 = {
 						CreatedOnToolsVersion = 13.3.1;
 						LastSwiftMigration = 1330;
 					};
@@ -268,7 +204,6 @@
 			projectRoot = "";
 			targets = (
 				205B136D282DB9B700B1ACD3 /* Deluge (iOS) */,
-				205B1373282DB9B700B1ACD3 /* Deluge (macOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -282,14 +217,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		205B1372282DB9B700B1ACD3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				205B137C282DB9B700B1ACD3 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -297,14 +224,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				205B13E3282DBB6C00B1ACD3 /* PercentView.swift in Sources */,
 				205B1405282DBB6C00B1ACD3 /* MainView.swift in Sources */,
 				205B13F7282DBB6C00B1ACD3 /* Torrent.swift in Sources */,
 				205B13EF282DBB6C00B1ACD3 /* SignInViewModel.swift in Sources */,
 				205B1403282DBB6C00B1ACD3 /* TorrentListView.swift in Sources */,
 				205B13F1282DBB6C00B1ACD3 /* DelugeClient.swift in Sources */,
 				205B13E5282DBB6C00B1ACD3 /* ETAView.swift in Sources */,
-				205B13F9282DBB6C00B1ACD3 /* Credentials.swift in Sources */,
 				205B13E9282DBB6C00B1ACD3 /* RootViewModel.swift in Sources */,
 				205B13FD282DBB6C00B1ACD3 /* SignInView.swift in Sources */,
 				205B1407282DBB6C00B1ACD3 /* DelugeApp.swift in Sources */,
@@ -312,32 +237,8 @@
 				205B13EB282DBB6C00B1ACD3 /* TorrentListViewModel.swift in Sources */,
 				205B13FB282DBB6C00B1ACD3 /* RootView.swift in Sources */,
 				205B13F3282DBB6C00B1ACD3 /* TorrentState.swift in Sources */,
-				205B13E7282DBB6C00B1ACD3 /* UploadDownloadView.swift in Sources */,
+				205B13E7282DBB6C00B1ACD3 /* TransferRateView.swift in Sources */,
 				205B13ED282DBB6C00B1ACD3 /* MainViewModel.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		205B1370282DB9B700B1ACD3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				205B13E4282DBB6C00B1ACD3 /* PercentView.swift in Sources */,
-				205B1406282DBB6C00B1ACD3 /* MainView.swift in Sources */,
-				205B13F8282DBB6C00B1ACD3 /* Torrent.swift in Sources */,
-				205B13F0282DBB6C00B1ACD3 /* SignInViewModel.swift in Sources */,
-				205B1404282DBB6C00B1ACD3 /* TorrentListView.swift in Sources */,
-				205B13F2282DBB6C00B1ACD3 /* DelugeClient.swift in Sources */,
-				205B13E6282DBB6C00B1ACD3 /* ETAView.swift in Sources */,
-				205B13FA282DBB6C00B1ACD3 /* Credentials.swift in Sources */,
-				205B13EA282DBB6C00B1ACD3 /* RootViewModel.swift in Sources */,
-				205B13FE282DBB6C00B1ACD3 /* SignInView.swift in Sources */,
-				205B1408282DBB6C00B1ACD3 /* DelugeApp.swift in Sources */,
-				205B1400282DBB6C00B1ACD3 /* TorrentListItemView.swift in Sources */,
-				205B13EC282DBB6C00B1ACD3 /* TorrentListViewModel.swift in Sources */,
-				205B13FC282DBB6C00B1ACD3 /* RootView.swift in Sources */,
-				205B13F4282DBB6C00B1ACD3 /* TorrentState.swift in Sources */,
-				205B13E8282DBB6C00B1ACD3 /* UploadDownloadView.swift in Sources */,
-				205B13EE282DBB6C00B1ACD3 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +249,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -377,9 +279,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -406,6 +310,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -435,9 +340,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -464,12 +371,13 @@
 				DEVELOPMENT_TEAM = 49JZ893555;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -478,6 +386,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.emil.ios.Deluge;
 				PRODUCT_NAME = Deluge;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -496,12 +408,13 @@
 				DEVELOPMENT_TEAM = 49JZ893555;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -510,69 +423,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.emil.ios.Deluge;
 				PRODUCT_NAME = Deluge;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		205B1383282DB9B700B1ACD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 49JZ893555;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.emil.ios.Deluge;
-				PRODUCT_NAME = Deluge;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		205B1384282DB9B700B1ACD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 49JZ893555;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.emil.ios.Deluge;
-				PRODUCT_NAME = Deluge;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -593,15 +451,6 @@
 			buildConfigurations = (
 				205B1380282DB9B700B1ACD3 /* Debug */,
 				205B1381282DB9B700B1ACD3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		205B1382282DB9B700B1ACD3 /* Build configuration list for PBXNativeTarget "Deluge (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				205B1383282DB9B700B1ACD3 /* Debug */,
-				205B1384282DB9B700B1ACD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

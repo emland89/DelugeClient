@@ -10,12 +10,12 @@ import SwiftUI
 
 struct MainView: View {
     
-    @ObservedObject var viewModel: MainViewModel
+    var viewModel: MainViewModel
     
     var body: some View {
         
         TabView {
-            NavigationView {
+            NavigationStack {
                 TorrentListView(viewModel: viewModel.listViewModel)
             }
             .tabItem {
@@ -24,14 +24,14 @@ struct MainView: View {
             }
             .tag(0)
             
-            NavigationView {
+            NavigationStack {
                 Button("Signout") {
                    // self.store.send(SignOutAction())
                 }
             }
             .tabItem {
-                Text("Client")
-                Image(systemName: "drop.triangle")
+                Text("Settings")
+                Image(systemName: "cog")
             }
             .tag(1)
         }
@@ -41,9 +41,6 @@ struct MainView: View {
     }
 }
 
-struct MainView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        MainView(viewModel: .init(client: .init(endpoint: URL(string: "")!, password: "")))
-    }
+#Preview {
+    MainView(viewModel: .init(client: .init(endpoint: URL(string: "google.com")!, password: "")))
 }
